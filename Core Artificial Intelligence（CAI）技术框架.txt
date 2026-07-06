@@ -1,0 +1,232 @@
+Core Artificial Intelligence（CAI）技术框架
+文档状态：草案
+起草团队：CRADT（Core Research and Development Team）
+许可证号：DOC-2026-029（待CPT审阅后正式归档）
+版本：0.9.0
+关联文档：
+
+DOC-2026-028（Core General Processing Unit 技术规格书）
+
+DOC-2026-005（CNBP 技术规格书）
+
+DOC-2026-006（CorePhone 完整规格与生态）
+
+DOC-2026-025（CoreOS Lite 技术规范）
+
+一、概述
+1.1 定义
+CAI（Core Artificial Intelligence）是Core生态的统一AI能力框架，覆盖从超大规模训练集群到极轻量边缘设备的完整AI体系。它定义了Core生态中所有AI模型的定义格式、命名规则、推理接口、部署方式和安全标准。
+
+1.2 核心定位
+属性	说明
+全称	Core Artificial Intelligence
+简称	CAI
+类型	AI能力框架（模型 + 引擎 + 工具链）
+覆盖范围	超大规模（>100B）至极轻量（<100M）
+部署设备	CNBP、CGPU、CorePhone、CoreWatch、CoreTV、CoreGlass等所有Core设备
+核心原则	统一格式、统一接口、统一安全、设备无关
+1.3 设计目标
+统一模型格式：所有CAI模型使用自研.cai格式，包含权重、结构、元数据、签名
+
+统一命名规范：模型文件名编码规模、目标设备、版本信息
+
+统一推理接口：所有设备使用相同的API，开发者无需关心底层硬件
+
+统一安全机制：每个模型带数字签名，来源可验证，推理可审计
+
+统一分发通道：模型通过Core Cloud / CNS / OTA统一分发和更新
+
+二、模型格式
+2.1 文件格式
+CAI模型采用自研.cai格式，文件结构如下：
+
+text
+┌─────────────────────────────────────────────┐
+│  .cai 模型文件结构                          │
+├─────────────────────────────────────────────┤
+│  文件头（Header）                           │
+│  ├── 魔数（Magic Number）: "CAI\x00"       │
+│  ├── 版本号                                │
+│  ├── 模型规模（参数量）                    │
+│  ├── 目标设备代号                          │
+│  ├── 模型结构描述（指针）                  │
+│  ├── 权重数据（指针）                      │
+│  ├── 输入输出定义                          │
+│  └── 数字签名                              │
+├─────────────────────────────────────────────┤
+│  模型结构（Model Structure）                │
+│  ├── 层定义                                │
+│  ├── 连接关系                              │
+│  └── 算子类型                              │
+├─────────────────────────────────────────────┤
+│  权重数据（Weights）                        │
+│  └── 量化后的权重（INT8/INT4/FP16）        │
+└─────────────────────────────────────────────┘
+2.2 文件扩展名
+固定扩展名：.cai
+
+所有CAI模型必须使用此扩展名
+
+三、命名规则
+3.1 格式
+text
+CAI[规模]-[设备代号][代际]-[年份]-[版本].cai
+3.2 组成部分
+部分	说明	示例
+前缀	Core AI固定标识	CAI
+规模	参数量级：M（百万）、B（十亿）、T（万亿）	1.5B、7B、405B、100M
+设备代号	目标运行设备	CP（CorePhone）、NB（CNBP）、CG（CGPU）
+代际	设备代际编号	7、8、9、1
+年份	发布年份	2026
+版本	当年度版本号	1、2、3
+扩展名	固定	.cai
+3.3 设备代号表
+设备	代号
+CorePhone	CP
+CNBP	NB
+CGPU	CG
+CoreWatch	CW
+CoreTV	TV
+CoreGlass	GL
+CoreBoard	BD
+通用平台（未指定设备）	GP
+3.4 命名示例
+完整文件名	含义
+CAI1.5B-CG1-2026-1.cai	1.5B参数，CGPU第1代，2026年第1版
+CAI7B-CP7-2026-1.cai	7B参数，CorePhone第7代，2026年第1版
+CAI405B-NB9-2026-1.cai	405B参数，CNBP第9代，2026年第1版
+CAI100M-CW7-2026-1.cai	100M参数，CoreWatch第7代，2026年第1版
+四、CAI推理引擎接口
+4.1 设计原则
+统一接口：所有Core设备使用相同的API
+
+简单调用：三步操作——加载、推理、卸载
+
+自动适配：引擎自动选择最优推理后端（NPU/GPU/CPU）
+
+设备无关：同一份代码在所有Core设备上运行
+
+4.2 核心接口
+加载模型
+python
+model = cai.load("模型文件名.cai")
+参数	说明
+输入	模型文件名（字符串）
+输出	模型对象（句柄）
+行为	验证模型签名 → 加载到内存 → 准备推理
+异常	文件不存在 / 签名无效 / 设备不支持
+执行推理
+python
+result = model.infer(输入数据)
+参数	说明
+输入	文本、图像张量、数值向量等（格式由模型定义）
+输出	推理结果（格式由模型定义）
+行为	数据预处理 → 硬件推理 → 结果后处理
+异常	输入格式不匹配 / 推理超时 / 硬件错误
+批量推理
+python
+results = model.batch_infer([数据1, 数据2, ...])
+参数	说明
+输入	数据列表（同一格式）
+输出	结果列表
+行为	批量推理，比逐个推理更高效
+异常	输入列表为空 / 格式不一致
+异步推理
+python
+task = model.infer_async(输入数据)
+result = task.wait()      # 等待完成
+status = task.status()    # 查询状态
+task.cancel()             # 取消任务
+参数	说明
+输入	数据（格式由模型定义）
+输出	任务对象
+行为	不阻塞主程序，后台执行推理
+异常	推理超时 / 任务取消
+获取模型信息
+python
+info = model.get_info()
+# 返回：规模、精度、输入格式、输出格式、版本、设备要求等
+卸载模型
+python
+model.unload()
+参数	说明
+输入	无
+输出	无
+行为	释放内存，卸载模型
+异常	无
+查询设备能力
+python
+capability = cai.get_capability()
+# 返回：支持的最大模型规模、精度类型、算力(TOPS)、可用内存等
+4.3 使用示例
+最简单的用法：
+
+python
+import cai
+
+# 加载模型
+model = cai.load("CAI1.5B-CG1-2026-1.cai")
+
+# 执行推理
+result = model.infer("这个零件是否有缺陷？")
+
+# 输出结果
+print(result)
+
+# 卸载
+model.unload()
+批量推理示例：
+
+python
+# 批量处理图像
+images = [load_image(f"img_{i}.jpg") for i in range(10)]
+results = model.batch_infer(images)
+for i, result in enumerate(results):
+    print(f"图片{i}: {result}")
+4.4 设备适配
+接口一致，引擎自动选择最优后端：
+
+设备	推理后端	说明
+CNBP	NPU（高性能）/ GPU（图形）	全精度，最高性能
+CGPU	NPU（1-2TOPS）/ CPU（回退）	INT8优化，工业级稳定
+CorePhone	NPU（移动优化）/ CPU	低功耗，移动端优化
+CoreWatch	CPU（超轻量）	仅支持极轻量模型（<100M）
+CoreTV	GPU/NPU	家庭场景，中等算力
+CoreGlass	NPU（实时）/ CPU	低延迟，实时推理
+五、模型安全
+5.1 签名机制
+每个.cai模型文件包含数字签名
+
+签名由CRADT（研发团队）签署，CPT（归档团队）确认发布
+
+设备加载模型时必须验证签名
+
+签名无效的模型无法加载
+
+5.2 推理审计
+每次推理记录：设备ID + 时间戳 + 模型版本 + 输入摘要
+
+审计日志存储于EEPRAM（如设备配备）
+
+工业场景可追溯推理决策过程
+
+5.3 访问控制
+模型权限与CoreID绑定
+
+不同设备拥有不同的模型加载权限
+
+敏感模型（如工业安全相关）需要额外授权
+
+六、模型规模层级
+规模等级	参数范围	部署设备	典型任务
+超大规模	>100B	CNBP集群	多模态大模型训练、复杂推理
+大规模	10B-100B	CNBP（单机）	代码生成、专业领域模型
+中等规模	1B-10B	CNBP（轻量）、CorePhone	通用AI助手、图像生成
+轻量规模	100M-1B	CGPU、CoreTV	工业检测、设备预测、智能家居
+极轻量规模	<100M	CoreWatch、CoreGlass、IoT	手势识别、唤醒词、传感器分析
+七、版本历史
+版本	日期	变更内容	作者
+0.9.0	2026-06-26	初始草案	CRADT
+本文档为Core Artificial Intelligence（CAI）技术框架草案，待CPT审阅后正式归档。
+
+More Core, More Possible.

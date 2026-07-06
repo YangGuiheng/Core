@@ -1,0 +1,123 @@
+Core 生态命名规则规范
+文档状态：正式存档
+归档签名：Core Privileges Team（CPT）
+审定日期：2026-06-24
+许可证号：DOC-2026-004
+版本：1.0.0
+
+一、概述
+1.1 定义
+Core生态命名规则规范（Core Naming Convention Specification）定义了Core生态内所有硬件模块、组件和产品的标准化命名体系。本规范确保Core生态内所有产品线的命名具有一致性和可识别性。
+
+1.2 适用范围
+本规范适用于Core生态内所有产品、模块和组件的命名，包括但不限于：
+
+中央处理器（CPU）
+
+图形处理器（GPU）
+
+主板（MOBO）
+
+内存模块（RAM）
+
+存储模块（NAND Flash）
+
+电源模块（UPS）
+
+通信模块（IC）
+
+显示模块（Display）
+
+音频模块（LoudSpeaker）
+
+散热模块（CoolingModule）
+
+影像模块（CameraModule）
+
+安全模块（SecurityModule）
+
+脑机接口（Brain）
+
+二、命名格式
+2.1 统一格式
+Core生态所有硬件模块的命名遵循以下格式：
+
+text
+Core [代际] [类别缩写] [级别]
+2.2 格式说明
+组成部分	说明	示例
+Core	生态品牌前缀，固定不变	Core
+[代际]	数字表示产品世代	7、8、9
+[类别缩写]	两位/三位字母表示模块类型	Gen、Cen、Wen
+[级别]	表示产品定位（可选）	Mobile、Pro、Ultra、Max、Server
+三、模块类别命名表
+模块类型	中文名称	命名格式	说明
+Brain	脑机接口	Core n BRA n	脑机接口模块
+CPU	中央处理器	Core n Gen n	通用计算核心
+GPU	并行计算处理器	Core n Cen n	图形与并行计算
+MOBO	主板	Core n Ben n	系统主板
+UPS	电源	Core n Den n	电源管理与供电
+RAM	随机存取存储器	Core n Wen n	系统内存
+NAND Flash	大容量串行闪存	Core n Sen n	非易失性存储
+I/O	输入/输出	Core n WRen n	输入输出接口
+IC	网络链接	Core n Len n	网络通信模块
+Display	显示	Core n SHen n	显示面板与驱动
+LoudSpeaker	音箱	Core n LSen n	音频输出
+CoolingModule	制冷模块	Core n Ken n	散热与冷却
+CameraModule	摄影模块	Core n Men n	影像采集
+SecurityModule	安全模块	Core n Aen n	安全与加密
+四、级别后缀定义
+模块名称后可附加级别后缀，以明确产品定位：
+
+后缀	含义	定位
+Mobile	移动版	手机、平板、轻薄本
+Pro	专业版	工作站、专业应用
+Ultra	极致版	旗舰产品、顶级性能
+Max	最大版	极致性能、最高规格
+Server	服务器版	数据中心、云计算
+Edge	边缘版	边缘计算、工业控制
+（无后缀）	标准版	主流桌面、通用场景
+五、命名示例
+5.1 处理器
+完整名称	代际	类别	级别
+Core 7 Gen 7 Mobile	7	Gen	Mobile
+Core 9 Gen 5 Server	9	Gen	Server
+Core 8 Gen 3	8	Gen	（标准版）
+5.2 图形处理器
+完整名称	代际	类别	级别
+Core 7 Cen 7 Mobile Pro	7	Cen	Mobile Pro
+Core 7 Cen 7 Max	7	Cen	Max
+Core 7 Cen 5	7	Cen	（标准版）
+5.3 电源模块
+完整名称	代际	类别	级别
+Core 7 Den 7 Mobile	7	Den	Mobile
+Core 7 Den 5	7	Den	（标准版）
+5.4 内存模块
+完整名称	代际	类别	级别
+Core 8 Wen 8	8	Wen	（标准版）
+Core 7 Wen 7 Pro	7	Wen	Pro
+5.5 存储模块
+完整名称	代际	类别	级别
+Core 7 Sen 7 Mobile	7	Sen	Mobile
+Core 7 Sen 5	7	Sen	（标准版）
+5.6 通信模块
+完整名称	代际	类别	级别
+Core 7 Len 7 Max	7	Len	Max
+Core 7 Len 7	7	Len	（标准版）
+六、命名规范要点
+品牌前缀统一：所有产品均以“Core”开头，确保品牌识别的一致性。
+
+代际数字递增：代际数字随产品世代递增（7、8、9……），不跳号、不重复。
+
+类别缩写固定：每个模块类别拥有唯一的缩写标识，一经定义不得更改。
+
+级别后缀可选：级别后缀仅在产品需要明确市场定位时使用，标准版可不加后缀。
+
+大小写规范：“Core”首字母大写，“Gen”“Cen”等类别缩写首字母大写，代际数字与类别缩写之间空格分隔。
+
+七、版本历史
+版本	日期	变更内容	作者
+1.0.0	2026-06-24	初始正式存档版本，基于Core生态原始命名规则整理	CRADT
+本规范为Core生态命名规则正式版本，自归档之日起生效。任何新增模块类别命名需经CRADT起草、CPT审阅后方可纳入本规范。
+
+More Core, More Possible.

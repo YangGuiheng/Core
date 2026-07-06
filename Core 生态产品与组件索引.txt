@@ -1,0 +1,96 @@
+Core 生态产品与组件索引
+文档状态：正式存档
+起草团队：CRADT（Core Research and Development Team）
+归档签名：Core Privileges Team（CPT）
+审定日期：2026-06-24
+许可证号：DOC-2026-007
+版本：1.0.0
+关联文档：DOC-2026-004（Core生态命名规则规范）
+
+一、概述
+1.1 定义
+本文档是Core生态所有产品、组件、模块和核心服务的完整索引，涵盖从硬件芯片到终端设备、从操作系统到云服务的全生态体系。
+
+1.2 适用范围
+本文档适用于Core生态内所有已定义或规划中的产品线与技术组件，作为生态全景的总览索引。
+
+二、硬件组件与模块
+2.1 核心计算组件
+名称	类别	说明
+CoreBrain	脑机接口	神经信号采集与解码模块，面向未来脑机交互
+CoreCPU	中央处理器	Core生态通用计算核心，涵盖移动/桌面/服务器全系列
+CoreGPU	并行计算处理器	图形渲染与通用并行计算加速模块
+2.2 存储与内存
+名称	类别	说明
+CoreNandFlash	大容量串行闪存	非易失性存储模块，NVMe协议
+CoreRAM	随机存取存储器	系统内存模块，LPDDR/GDDR/HBM系列
+2.3 主板与电源
+名称	类别	说明
+CoreMOBO	主板	系统主板，承载CPU/GPU/内存等核心组件
+CoreUPS	电源	电源管理与供电模块，含IceSword系列技术
+2.4 输入输出与通信
+名称	类别	说明
+CoreI/O	输入/输出	I/O接口与扩展模块
+CoreIC	网络链接	网络通信模块，含5G/WiFi/蓝牙/NFC/卫星
+2.5 显示与感知
+名称	类别	说明
+CoreDisplay	显示	显示面板与驱动模块
+CoreCameraModule	摄影模块	影像采集模块，含潜望/显微等
+2.6 散热与安全
+名称	类别	说明
+CoreCoolingModule	制冷模块	散热与冷却系统，含主动/被动散热技术
+CoreSecurityModule	安全模块	硬件级加密与安全芯片，含后量子加密加速
+三、软件与基础设施
+名称	类别	说明
+CoreOS	操作系统	Core生态统一操作系统，微内核+外核混合架构
+CoreCloud	云端服务	CoreCloud云服务平台，含存储/计算/AI/同步服务
+CoreLink	设备互联	Core设备间高速互联协议，含无线/有线/激光通信
+四、终端产品
+名称	类别	说明
+CorePhone	智能手机	Core生态移动核心设备，模块化设计
+CoreWatch	智能手表	健康监测与生物传感穿戴设备
+CoreTV	智能电视	家庭影音与智能家居中心
+CoreBook	笔记本电脑	移动计算终端，含Air/Pro/Studio等系列
+CoreBoard	开发板	开源硬件开发平台
+五、命名对应关系
+组件/产品	命名格式	参考规范
+CoreBrain	Core n BRA n	DOC-2026-004
+CoreCPU	Core n Gen n	DOC-2026-004
+CoreGPU	Core n Cen n	DOC-2026-004
+CoreMOBO	Core n Ben n	DOC-2026-004
+CoreRAM	Core n Wen n	DOC-2026-004
+CoreUPS	Core n Den n	DOC-2026-004
+CoreNandFlash	Core n Sen n	DOC-2026-004
+CoreI/O	Core n WRen n	DOC-2026-004
+CoreIC	Core n Len n	DOC-2026-004
+CoreDisplay	Core n SHen n	DOC-2026-004
+CoreCameraModule	Core n Men n	DOC-2026-004
+CoreCoolingModule	Core n Ken n	DOC-2026-004
+CoreSecurityModule	Core n Aen n	DOC-2026-004
+六、产品线层级关系
+text
+Core 生态
+├── 硬件组件
+│   ├── 核心计算：CoreBrain, CoreCPU, CoreGPU
+│   ├── 存储内存：CoreNandFlash, CoreRAM
+│   ├── 主板电源：CoreMOBO, CoreUPS
+│   ├── 输入输出：CoreI/O, CoreIC
+│   ├── 显示感知：CoreDisplay, CoreCameraModule
+│   └── 散热安全：CoreCoolingModule, CoreSecurityModule
+├── 软件基础设施
+│   ├── CoreOS（操作系统）
+│   ├── CoreCloud（云服务）
+│   └── CoreLink（设备互联）
+└── 终端产品
+    ├── CorePhone（手机）
+    ├── CoreWatch（手表）
+    ├── CoreTV（电视）
+    ├── CoreBook（笔记本）
+    └── CoreBoard（开发板）
+七、版本历史
+版本	日期	变更内容	作者
+1.0.0	2026-06-24	初始正式存档版本，Core生态全组件与产品索引	CRADT
+本文档为Core生态产品与组件总索引，所有条目均可在对应规格书中查阅详细参数。
+
+More Core, More Possible.
+

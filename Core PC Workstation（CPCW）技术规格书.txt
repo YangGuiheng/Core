@@ -1,0 +1,159 @@
+Core PC Workstation（CPCW）技术规格书
+
+文档状态：正式存档
+起草团队：CRADT（Core Research and Development Team）
+归档签名：Core Privileges Team（CPT）
+生效日期：2026-07-05
+许可证号：DOC-2026-054
+版本：1.0.0
+关联文档：
+
+DOC-2026-004（Core 生态命名规则规范）
+DOC-2026-005（CoreNoteBookPro 技术规格书）
+DOC-2026-012（CoreCPU 完整产品线）
+DOC-2026-013（CoreGPU 完整规格）
+一、概述
+
+1.1 定义
+
+Core PC Workstation（CPCW）是Core生态的旗舰级桌面工作站，采用EATX标准规格，搭载第九代Core计算平台，面向专业创作、AI训练、科学计算等高性能计算场景。CPCW填补了Core在固定桌面工作站领域的空白，与CNBP（移动服务器节点）形成互补。
+
+1.2 核心定位
+
+属性	规格
+产品代号	CPCW
+全称	Core PC Workstation
+主板规格	EATX
+代际	第九代
+定位	旗舰级桌面工作站
+目标用户	专业创作者、AI研究员、科学计算、高端开发
+1.3 设计目标
+
+提供桌面级最高性能计算能力
+全模块化设计，用户可自行升级维护
+多架构原生支持（ARM + x64）
+大规模AI推理与训练本地化
+专业级影音与显示能力
+二、主板（Core Ben 9 Workstation）
+
+参数	规格
+型号	Core Ben 9 Workstation
+尺寸	EATX（30.5cm × 33cm）
+CPU插槽	LGA-2848（兼容第九代Core CPU）
+内存插槽	8×DIMM（支持CHSR系列）
+存储接口	6×M.2（PCIe 5.0），4×SATA 3.0
+PCIe插槽	4×PCIe 5.0 x16，2×PCIe 5.0 x8
+网络	10GbE × 2，WiFi 8，Bluetooth 6.0
+USB	USB4 × 8，USB 3.2 Gen 2 × 8
+安全模块	CSM（Core Security Module）
+三、中央处理器（CPU）
+
+参数	规格
+型号	Core 9 Gen 9 Max
+架构	ARMv9.5（兼容x64原生执行）
+核心配置	至高配置：16性能核 + 12能效核
+线程数	44线程
+最高频率	性能核 5.8GHz / 能效核 4.2GHz
+制程	1.4nm TSMC A14 + GAA
+L3缓存	128MB 系统级共享
+TDP	150-350W
+四、图形处理器（GPU）
+
+参数	规格
+型号	Core 9 Cen 9 Pro
+架构	RDNA 5（专业版）
+计算单元	96 CU
+流处理器	6,144
+频率	2.8GHz
+显存	32GB GDDR7（384-bit）
+带宽	1.2TB/s
+ECC支持	是
+光追单元	96个
+AI单元	256个
+TDP	300-400W
+五、内存（RAM）
+
+参数	规格
+型号	CHSR500-32×2
+类型	CHSR（Core High Spend RAM）
+速率	500
+单条容量	32GB
+数量	2条（可扩展至8条，最大256GB）
+总容量	64GB（标配）/ 256GB（最大）
+ECC	支持
+六、存储（NAND Flash）
+
+参数	规格
+型号	CTSNF450-10240×2
+类型	CTSNF（Core Turbo Spend Nand Flash）
+速率	450
+单盘容量	10.24TB
+数量	2块
+总容量	20.48TB
+接口	PCIe 5.0 x4
+协议	NVMe 5.0
+七、人工智能引擎（NPU）
+
+参数	规格
+类型	独立NPU加速卡
+算力	1,500 TOPS（INT8）
+接口	PCIe 5.0 x16
+显存	16GB HBM3（专用）
+TDP	150W
+八、显示模块（Core 9 SHen 7）
+
+参数	规格
+型号	Core 9 SHen 7
+尺寸	27英寸（标配）/ 32英寸（可选）
+分辨率	4K（3840×2160）/ 5K（5120×2880）
+刷新率	144Hz
+亮度	1,000nits（HDR）
+色域	100% DCI-P3 / 99% Adobe RGB
+色准	ΔE < 1
+九、音频模块（Core 9 LSen 7 × 6）
+
+参数	规格
+型号	Core 9 LSen 7
+数量	6单元
+声道	5.1环绕声 / 立体声（可配置）
+接口	3.5mm × 6 / 光纤输出 / HDMI音频
+十、散热模块（Core 9 Ken 9）
+
+参数	规格
+型号	Core 9 Ken 9
+CPU散热	360mm一体式水冷
+显卡散热	三风扇主动散热
+机箱风道	前进后出，顶部出风
+风量	150 CFM
+十一、影像模块（Core 9 Men 5）
+
+参数	规格
+型号	Core 9 Men 5
+像素	4K / 8K（可选）
+HDR	支持
+自动对焦	支持
+接口	USB-C / HDMI
+十二、整机设计理念
+
+CPCW的设计遵循以下原则：
+
+模块化：所有组件均可单独更换升级，不受形态限制
+可扩展性：8条内存插槽、4条PCIe x16、6个M.2，预留充足扩展空间
+性能优先：不妥协于体积或功耗，以性能释放为第一优先级
+工作站定位：面向专业用户，非消费级游戏PC
+与Core生态协同：支持CoreOS、Windows、Linux多系统；原生支持Core Link协议；可与CNBP、CLSDN、CNS协同工作
+十三、典型部署场景
+
+场景	配置	说明
+AI模型训练	CPU+GPU+NPU全开	本地微调/训练中小规模模型
+3D渲染与视频剪辑	CPU+GPU满载	8K视频剪辑、3D建模与渲染
+科学计算	CPU+GPU并行	数值模拟、数据分析
+软件开发	CPU+内存	大型代码库编译、虚拟机运行
+Core生态管理节点	标准配置	本地CGC管理终端、CEC调度节点
+十四、版本历史
+
+版本	日期	变更内容	作者
+1.0.0	2026-07-05	初始正式存档版本	CRADT
+本文档为Core PC Workstation（CPCW）技术规格正式存档版本。
+
+More Core, More Possible.

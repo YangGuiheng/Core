@@ -1,0 +1,268 @@
+Core Artificial Intelligence（CAI）技术指南
+文档状态：草案
+起草团队：CRADT（Core Research and Development Team）
+许可证号：DOC-2026-030（待CPT审阅后正式归档）
+版本：0.9.0
+关联文档：
+
+DOC-2026-029（Core Artificial Intelligence 技术框架）
+
+DOC-2026-028（Core General Processing Unit 技术规格书）
+
+DOC-2026-005（CNBP 技术规格书）
+
+DOC-2026-025（CoreOS Lite 技术规范）
+
+一、概述
+1.1 定义
+Core Artificial Intelligence（CAI）技术指南是Core生态AI能力的完整技术体系文档，涵盖模型定义、训练基础设施、推理引擎、部署分发、安全管理、开发者工具和生态治理等全部环节。
+
+1.2 与CAI技术框架的关系
+文档	定位
+DOC-2026-029（CAI技术框架）	核心架构定义：模型格式、命名规则、推理接口
+本文档（CAI技术指南）	完整技术体系：涵盖训练、分发、部署、安全、工具链、生态治理
+两者关系：框架定义“是什么”，指南定义“怎么做”。
+
+1.3 覆盖范围
+text
+CAI 技术指南 ｜ 完整体系
+│
+├── 模型层
+│   ├── 模型格式定义（.cai）
+│   ├── 命名规则规范
+│   └── 模型规模分级
+│
+├── 训练层
+│   ├── CAI训练中心（超大规模）
+│   ├── 分布式训练（CNBP集群）
+│   └── 边缘微调（CGPU / CorePhone）
+│
+├── 引擎层
+│   ├── 推理引擎接口（统一API）
+│   ├── 设备适配（NPU/GPU/CPU）
+│   └── 推理后端实现
+│
+├── 分发层
+│   ├── Core Cloud模型仓库
+│   ├── CNS算力网络分发
+│   └── OTA增量更新
+│
+├── 安全层
+│   ├── 模型签名与验证
+│   ├── 推理审计与追溯
+│   └── 访问控制与权限管理
+│
+├── 工具链层
+│   ├── CAI SDK
+│   ├── 模型转换工具
+│   ├── 性能分析工具
+│   └── 部署管理工具
+│
+└── 生态治理层
+    ├── 模型发布流程
+    ├── 版本管理策略
+    └── 社区贡献机制
+二、模型层
+2.1 模型格式定义
+详见 DOC-2026-029 第二节“模型格式”。
+
+2.2 命名规则规范
+详见 DOC-2026-029 第三节“命名规则”。
+
+2.3 模型规模分级
+等级	参数范围	典型设备	说明
+超大规模	>100B	CNBP集群	多模态、科学研究
+大规模	10B-100B	CNBP（单机）	代码生成、专业领域
+中等规模	1B-10B	CorePhone、CNBP（轻量）	通用AI助手
+轻量规模	100M-1B	CGPU、CoreTV	工业检测、智能家居
+极轻量	<100M	CoreWatch、CoreGlass	手势、唤醒词、传感器
+三、训练层
+3.1 CAI训练中心（超大规模）
+CAI训练中心是Core生态中超大规模AI模型的训练基础设施，负责从零训练或大规模预训练所有>10B参数的CAI模型。
+
+属性	说明
+硬件底座	CNBP集群 + 专用AI加速卡
+训练框架	CAI Train Framework（自研）
+模型规模	>10B至>100B
+输出格式	原始权重（FP32/FP16）→ 量化（INT8/INT4）→ 打包为.cai
+训练周期	根据模型规模，数周至数月
+输出模型	基础模型（Foundation Model），供下游微调
+3.2 分布式训练（CNBP集群）
+对于中等规模模型（1B-10B），利用CLSDN组网的多台CNBP进行分布式训练。
+
+属性	说明
+硬件底座	多台CNBP通过CLSDN组网
+训练框架	CAI Distributed Trainer
+模型规模	1B-10B
+数据并行	支持（数据分片到各节点）
+模型并行	支持（大模型拆分到多节点）
+3.3 边缘微调（CGPU / CorePhone）
+在工业现场或移动端，利用本地数据进行模型微调。
+
+属性	说明
+硬件底座	CGPU、CorePhone、CoreBook
+训练框架	CAI Edge Tuner（轻量版）
+微调规模	1B以下模型
+数据隐私	数据不离设备
+更新方式	微调后生成增量包，上传至Core Cloud
+四、引擎层
+4.1 推理引擎接口
+详见 DOC-2026-029 第四节“推理引擎接口”。
+
+4.2 设备适配
+不同设备的推理引擎实现：
+
+设备	推理后端	引擎实现	说明
+CNBP	NPU / GPU	CAI Engine Pro	全精度，最高性能
+CGPU	NPU / CPU	CAI Engine Edge	INT8优化，工业级
+CorePhone	NPU / CPU	CAI Engine Mobile	低功耗，移动优化
+CoreWatch	CPU	CAI Engine Lite	超轻量
+CoreTV	GPU / NPU	CAI Engine Home	家庭场景
+4.3 推理后端架构
+text
+应用层
+   │
+   ▼
+CAI统一接口（cai.load / infer / batch_infer / unload）
+   │
+   ▼
+硬件抽象层（HAL）
+   │
+   ├── NPU驱动
+   ├── GPU驱动（OpenCL / Vulkan）
+   └── CPU驱动（NEON / SIMD）
+   │
+   ▼
+硬件层
+   ├── NPU（核心推理）
+   ├── GPU（并行计算）
+   └── CPU（回退兼容）
+五、分发层
+5.1 Core Cloud 模型仓库
+所有正式发布的CAI模型存储在Core Cloud模型仓库中
+
+设备可通过CoreID认证后下载所需模型
+
+模型下载自动验证数字签名
+
+5.2 CNS 算力网络分发
+对于需要实时推理的场景，CNS可直接将模型下发至执行设备
+
+边缘设备（CGPU）可向CNS请求模型更新
+
+支持差分模型分发（仅传输变化部分）
+
+5.3 OTA 增量更新
+模型更新以增量包形式分发（不整模型替换）
+
+支持静默更新（后台下载，下次重启生效）
+
+更新失败自动回滚到上一版本
+
+六、安全层
+6.1 模型签名与验证
+每个.cai模型文件包含数字签名
+
+签名由CRADT签署（研发团队），CPT确认（归档团队）
+
+模型加载时自动验证签名，无效签名拒绝加载
+
+验证失败触发安全事件并记录至EEPRAM（如果设备配备）
+
+6.2 推理审计与追溯
+每次推理记录：设备ID + 时间戳 + 模型版本 + 输入摘要
+
+审计日志存储于EEPRAM（符合DOC-2026-027规范）
+
+工业场景下，推理决策可追溯至具体模型版本和输入数据
+
+6.3 访问控制与权限管理
+模型权限与CoreID绑定
+
+不同设备有不同的模型加载权限
+
+敏感模型（如工业安全相关）需要额外授权
+
+权限校验在模型加载时自动执行
+
+七、工具链层
+7.1 CAI SDK
+工具	功能	支持平台
+CAI Model Converter	将第三方模型转换为.cai格式	Windows/Linux/macOS
+CAI Model Packager	打包模型文件（含签名）	Windows/Linux/macOS
+CAI CLI	命令行工具（训练、转换、部署）	Windows/Linux/macOS
+CAI Studio	图形化开发环境	CoreOS / Windows / macOS
+CAI Profiler	性能分析工具	CoreOS / Windows / macOS
+7.2 模型转换流程
+text
+第三方模型（PyTorch / TensorFlow / ONNX）
+   │
+   ▼
+CAI Model Converter
+   │
+   ├── 结构转换
+   ├── 权重提取
+   ├── 算子映射
+   └── 量化（FP32→FP16/INT8/INT4）
+   │
+   ▼
+CAI Model Packager
+   │
+   ├── 生成模型结构描述
+   ├── 打包权重数据
+   ├── 添加元数据
+   └── 数字签名
+   │
+   ▼
+.cai 模型文件
+八、生态治理层
+8.1 模型发布流程
+text
+模型开发（CRADT）
+   │
+   ▼
+内部验证（CRADT + CTET）
+   │
+   ▼
+灰度测试（CCT + 选定用户）
+   │
+   ▼
+公开测试（全体用户）
+   │
+   ▼
+CPT审阅与归档签署
+   │
+   ▼
+Core Cloud 模型仓库发布
+8.2 版本管理策略
+版本类型	说明	兼容性
+主版本（X.0.0）	重大架构变更	不向后兼容
+次版本（x.Y.0）	功能改进	向后兼容（模型兼容）
+补丁版本（x.y.Z）	错误修复、性能优化	完全兼容
+8.3 社区贡献机制
+社区开发者可训练模型并提交至CRADT审核
+
+审核通过后纳入Core Cloud模型仓库
+
+社区模型在CAI Studio中标记为“社区贡献”
+
+贡献者获取共建者股份（详见DOC-2026-002）
+
+九、与Core生态的集成
+生态组件	与CAI的关系
+CoreOS / CoreOS Lite	CAI引擎的宿主操作系统
+Core RTOS	CAI安全启动和信任链保障
+CNS	CAI模型分发和算力调度
+CLSDN	CAI模型在集群节点间传输
+Core Cloud	CAI模型仓库和OTA更新
+CGPU	CAI轻量模型的执行平台
+CNBP	CAI大规模模型的训练和推理平台
+CorePhone	CAI移动端推理
+CoreWatch / CoreGlass	CAI极轻量推理
+EEPRAM	CAI推理审计日志存储（DOC-2026-027）
+十、版本历史
+版本	日期	变更内容	作者
+0.9.0	2026-06-26	初始草案	CRADT
+本文档为Core Artificial Intelligence（CAI）技术指南草案，与DOC-2026-029（CAI技术框架）共同构成Core生态AI能力的完整技术体系。
+
+More Core, More Possible.

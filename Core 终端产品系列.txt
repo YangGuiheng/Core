@@ -1,0 +1,421 @@
+Core 终端产品系列
+文档状态：正式存档
+起草团队：CRADT（Core Research and Development Team）
+归档签名：Core Privileges Team（CPT）
+审定日期：2026-06-24
+许可证号：DOC-2026-010
+版本：1.0.0
+关联文档：
+
+DOC-2026-004（Core生态命名规则规范）
+
+DOC-2026-005（CoreNoteBookPro 技术规格书）
+
+DOC-2026-006（Core Phone 完整规格与生态）
+
+DOC-2026-009（Core 生态应用与开发者文档）
+
+DOC-2026-011（CoreOS 操作系统）
+
+一、概述
+1.1 定义
+Core终端产品系列涵盖了Core生态内所有面向终端用户的计算设备——从手腕上的智能手表到家庭影音中心的智能电视，从移动创作的笔记本电脑到开发者手中的开源开发板。
+
+1.2 产品线总览
+产品线	定位	核心场景
+CoreWatch	智能手表	健康监测、生物传感、穿戴互联
+CoreBook	笔记本电脑	移动创作、高性能计算、专业工作流
+CoreTV	智能电视	家庭影音、智能家居中心、云游戏
+CoreBoard	开发板	开源硬件、创客开发、边缘原型
+二、CoreWatch 智能手表
+2.1 产品理念
+CoreWatch不仅是手表，更是你的生物哨站——24小时守护健康，无缝连接Core生态。
+
+2.2 CoreWatch 7
+核心模块（Core Gen 7Watch）
+参数	规格
+制程	3nm
+CPU	2P + 2E（4核）
+频率	P核 2.0GHz / E核 1.2GHz
+NPU	10 TOPS
+TDP	0.5-2W
+显示模块（Core SHen 7Watch）
+参数	规格
+尺寸	1.9英寸
+分辨率	466×466
+类型	AMOLED
+亮度	2,000nits
+刷新率	1-60Hz
+传感器模块
+传感器	功能
+心率	PPG光学心率
+血氧	SpO2监测
+血压	无创血压估算
+体温	皮肤温度传感器
+ECG	单导联心电图
+生物电阻	体脂率估算
+加速度	6轴加速度计
+陀螺仪	6轴陀螺仪
+气压	高度计
+GPS	双频GPS/GNSS
+通信模块（Core Len 7Watch）
+参数	规格
+蓝牙	Bluetooth 6.0
+WiFi	WiFi 6
+NFC	支持
+eSIM	可选
+电源模块（Core Den 7Watch）
+参数	规格
+电池	500mAh
+续航	典型7天 / 重度3天
+充电	磁吸快充（30分钟充80%）
+安全模块（Core Aen 7Watch）
+参数	规格
+加密	AES-256
+生物识别	心率生物识别
+2.3 CoreWatch 7 Pro
+核心模块（Core Gen 7Watch Pro）
+参数	规格
+制程	3nm
+CPU	2P + 4E（6核）
+频率	P核 2.4GHz / E核 1.5GHz
+NPU	15 TOPS
+TDP	0.8-3W
+显示模块（Core SHen 7Watch Pro）
+参数	规格
+尺寸	2.0英寸
+分辨率	502×502
+类型	AMOLED
+亮度	2,500nits
+刷新率	1-120Hz
+传感器模块（额外支持）
+传感器	功能
+血糖	无创血糖估算
+睡眠呼吸	睡眠呼吸暂停检测
+跌倒检测	自动紧急呼叫
+通信模块（Core Len 7Watch Pro）
+参数	规格
+蓝牙	Bluetooth 6.0
+WiFi	WiFi 7
+NFC	支持
+eSIM	标配
+卫星	紧急SOS卫星通信
+电源模块（Core Den 7Watch Pro）
+参数	规格
+电池	600mAh
+续航	典型14天 / 重度7天
+充电	磁吸快充 + 太阳能辅助
+2.4 CoreWatch 7 Ultra
+核心模块（Core Gen 7Watch Ultra）
+参数	规格
+制程	3nm
+CPU	4P + 4E（8核）
+频率	P核 2.8GHz / E核 1.8GHz
+NPU	25 TOPS
+TDP	1-5W
+显示模块（Core SHen 7Watch Ultra）
+参数	规格
+尺寸	2.2英寸
+分辨率	540×540
+类型	MicroLED
+亮度	4,000nits
+刷新率	1-165Hz
+传感器模块（额外支持）
+传感器	功能
+脑电	EEG脑电波监测
+肌电	EMG肌肉电信号
+环境	空气质量/紫外线
+通信模块（Core Len 7Watch Ultra）
+参数	规格
+蓝牙	Bluetooth 6.0
+WiFi	WiFi 7
+NFC	支持
+eSIM	标配
+卫星	双向卫星通信
+电源模块（Core Den 7Watch Ultra）
+参数	规格
+电池	800mAh
+续航	典型30天 / 重度14天
+充电	磁吸快充 + 太阳能 + 动能回收
+2.5 CoreWatch 功能特性
+健康监测：
+
+24小时心率：异常心率提醒
+
+血氧监测：睡眠血氧追踪
+
+睡眠分析：睡眠阶段分析
+
+压力监测：HRV压力指数
+
+女性健康：经期/排卵追踪
+
+运动追踪：100+运动模式
+
+CoreLink 互联：
+
+通知同步：手机通知实时同步
+
+远程控制：控制手机/电脑
+
+查找设备：查找手机/耳机
+
+支付：NFC支付
+
+门禁：模拟门禁卡
+
+独立功能：
+
+独立通话：eSIM独立通话
+
+独立音乐：本地音乐播放
+
+独立导航：GPS独立导航
+
+独立应用：安装第三方应用
+
+三、CoreBook 笔记本电脑
+3.1 产品理念
+CoreBook是移动创作的终极工具——性能与便携的完美平衡，Core生态的创作核心。
+
+3.2 CoreBook 7 Air（超轻薄本）
+参数	规格
+核心模块	Core Gen 7Mobile，3nm
+CPU	4P + 4E（8核12线程）
+频率	P核 3.8GHz / E核 2.6GHz
+GPU	集成16CU RDNA3.5
+NPU	25 TOPS
+TDP	15-28W
+内存	16GB LPDDR5X（板载）
+存储	512GB NVMe 4.0
+屏幕	13.6英寸，2880×1800，60Hz，500nits，100% P3
+电池	52Wh，18小时续航
+充电	65W PD快充
+接口	Thunderbolt 4 × 2，USB-C 4.0 × 2
+重量	980g
+厚度	11.3mm
+材质	镁铝合金
+3.3 CoreBook 7（标准版）
+参数	规格
+核心模块	Core Gen 7 Gen 3 Mobile，3nm
+CPU	6P + 4E（10核16线程）
+频率	P核 4.5GHz / E核 3.0GHz
+GPU	集成20CU RDNA3.5
+NPU	40 TOPS
+TDP	28-45W
+内存	32GB LPDDR5X（板载）
+存储	1TB NVMe 4.0
+屏幕	14.2英寸，3024×1964，120Hz ProMotion，600nits，100% P3
+电池	70Wh，15小时续航
+充电	100W PD快充
+接口	Thunderbolt 4 × 2，USB-A 3.2 × 2，HDMI 2.1，SD卡槽
+重量	1.45kg
+厚度	15.5mm
+材质	铝合金
+3.4 CoreBook 7 Pro（专业版）
+参数	规格
+核心模块	Core Gen 7 Gen 5 Mobile，3nm
+CPU	8P + 4E（12核20线程）
+频率	P核 5.2GHz / E核 3.5GHz
+GPU	集成24CU RDNA4 + 独立Core Cen 7 Mobile
+独立GPU	2048流处理器，8GB GDDR6，80W
+NPU	60 TOPS
+TDP	45-65W（CPU）/ 80W（GPU）
+内存	64GB LPDDR6（板载）
+存储	2TB NVMe 4.0
+屏幕	16.2英寸，3456×2234，120Hz ProMotion，1000nits HDR，100% P3 + 99% Adobe RGB，ΔE<1
+电池	100Wh，12小时续航
+充电	140W PD快充
+接口	Thunderbolt 4 × 3，USB-A 3.2 × 2，HDMI 2.1，SD卡槽（UHS-II），MagSafe 3
+重量	2.1kg
+厚度	18.2mm
+材质	铝合金
+3.5 CoreBook 7 Studio（创作旗舰）
+参数	规格
+核心模块	Core Gen 7 Gen 7 Mobile，2nm
+CPU	8P + 4E（12核20线程）
+频率	P核 5.5GHz / E核 3.8GHz
+GPU	集成24CU RDNA4 + 独立Core Cen 7 Mobile Pro
+独立GPU	2560流处理器，12GB GDDR6，120W
+NPU	75 TOPS
+TDP	65-100W（CPU）/ 120W（GPU）
+内存	128GB LPDDR6（板载）
+存储	4TB NVMe 4.0（双盘位）
+屏幕	16.2英寸 MiniLED，3456×2234，120Hz ProMotion，1600nits HDR，100% P3 + 99% Adobe RGB + 98% Rec.2020，ΔE<0.5，2500分区背光
+电池	120Wh，10小时续航
+充电	200W PD快充
+接口	Thunderbolt 4 × 4，USB-A 3.2 × 2，HDMI 2.1 × 2，SD卡槽（UHS-II），10GbE网口，MagSafe 3
+重量	2.6kg
+厚度	21.5mm
+材质	铝合金 + 碳纤维
+四、CoreTV 智能电视
+4.1 产品理念
+CoreTV是家庭娱乐的中心——影院级音画，智能互联，Core生态的家庭核心。
+
+4.2 CoreTV 7（标准版）
+参数	规格
+核心模块	Core Gen 7TV，4nm
+CPU	4P + 4E（8核）
+GPU	16CU RDNA3.5
+NPU	30 TOPS
+尺寸	55 / 65 / 75英寸
+分辨率	4K（3840×2160）
+面板	QLED
+刷新率	120Hz
+亮度	1,000nits（HDR）
+色域	100% DCI-P3
+分区背光	128分区
+HDR	HDR10+ / Dolby Vision
+音频	2.1声道，40W + 20W低音炮，Dolby Atmos
+内存	8GB
+存储	128GB
+接口	HDMI 2.1 × 4，USB 3.0 × 2，光纤音频 × 1，网口 × 1，AV输入 × 1
+4.3 CoreTV 7 Pro（专业版）
+参数	规格
+核心模块	Core Gen 7TV Pro，4nm
+CPU	6P + 4E（10核）
+GPU	24CU RDNA4
+NPU	50 TOPS
+尺寸	65 / 75 / 85英寸
+分辨率	4K（3840×2160）
+面板	MiniLED
+刷新率	144Hz
+亮度	2,000nits（HDR）
+色域	100% DCI-P3 / 99% Adobe RGB
+分区背光	1024分区
+HDR	HDR10+ / Dolby Vision / HLG
+音频	5.1.2声道，80W，天空声道，Dolby Atmos / DTS:X
+内存	16GB
+存储	256GB
+接口	HDMI 2.1 × 4，USB 3.0 × 3，光纤音频 × 1，2.5GbE网口 × 1，AV输入 × 1
+4.4 CoreTV 7 Ultra（旗舰版）
+参数	规格
+核心模块	Core Gen 7TV Ultra，3nm
+CPU	8P + 4E（12核）
+GPU	32CU RDNA4
+NPU	75 TOPS
+尺寸	77 / 83 / 98英寸
+分辨率	8K（7680×4320）
+面板	MicroLED
+刷新率	240Hz
+亮度	4,000nits（HDR）
+色域	100% DCI-P3 / 99% Adobe RGB / 98% Rec.2020
+分区背光	无分区（像素级控光）
+HDR	HDR10+ / Dolby Vision / HLG / Technicolor
+音频	7.1.4声道，120W，天空声道，无线外置低音炮，Dolby Atmos / DTS:X / IMAX Enhanced
+内存	32GB
+存储	512GB
+接口	HDMI 2.1 × 4，USB 3.0 × 4，光纤音频 × 1，10GbE网口 × 1，AV输入 × 1，音频输出 × 1
+4.5 CoreTV 功能特性
+CoreOS TV：
+
+界面：专为电视优化的CoreOS
+
+语音：远场语音控制
+
+手势：手势控制
+
+投屏：支持CoreLink投屏
+
+游戏：云游戏支持
+
+AI画质：
+
+超分：AI超分辨率
+
+降噪：AI降噪
+
+色彩：AI色彩增强
+
+运动：MEMC运动补偿
+
+AI音质：
+
+增强：AI音质增强
+
+场景：场景化音效
+
+对话：对话增强
+
+智能家居：
+
+控制中心：智能家居控制中心
+
+摄像头：可选配摄像头（视频通话/健身）
+
+传感器：环境光/温度传感器
+
+五、CoreBoard 开发板
+5.1 产品理念
+CoreBoard是创客的乐园——开放硬件，无限可能，Core生态的创新核心。
+
+5.2 CoreBoard 7
+参数	规格
+CPU	Core Gen 7 Gen 3（6P+6E）
+GPU	集成16CU RDNA3.5
+NPU	35 TOPS
+内存	板载16GB LPDDR5X + SO-DIMM × 2（最大64GB）
+存储	板载128GB eMMC + M.2 2280 × 2（NVMe 4.0）
+接口	USB 3.2 × 4，USB-C（DP Alt）× 2，HDMI 2.1 × 2，PCIe 4.0 x4 × 1，PCIe 3.0 x1 × 2，SATA 3.0 × 2，Gigabit Ethernet × 1，GPIO 40-pin，I2C/SPI/UART
+扩展	M.2 E-Key（WiFi/BT），M.2 B-Key（4G/5G），摄像头接口（CSI），显示接口（DSI）
+电源	USB-C PD 65W，功耗10-45W
+尺寸	85mm × 56mm
+重量	45g
+5.3 CoreBoard 7 Pro
+参数	规格
+CPU	Core Gen 7 Gen 5（8P+8E）
+GPU	集成24CU RDNA4
+NPU	50 TOPS
+内存	板载32GB LPDDR6 + SO-DIMM × 4（最大256GB）
+存储	板载256GB eMMC + M.2 2280 × 4（NVMe 4.0）
+接口	USB 3.2 × 6，USB-C（DP Alt/Thunderbolt）× 2，HDMI 2.1 × 2，DisplayPort 2.1 × 2，PCIe 5.0 x16 × 1，PCIe 4.0 x4 × 2，PCIe 3.0 x1 × 4，SATA 3.0 × 4，10GbE × 2，GPIO 40-pin × 2
+扩展	M.2 E-Key（WiFi/BT），M.2 B-Key（4G/5G），摄像头接口（CSI）× 2，显示接口（DSI）× 2
+电源	DC 12V-24V，功耗15-100W
+尺寸	120mm × 120mm
+重量	120g
+5.4 CoreBoard 特性
+开源承诺：
+
+硬件开源：完整原理图/PCB
+
+软件开源：完整BSP/SDK
+
+文档开放：完整技术文档
+
+社区支持：活跃开发者社区
+
+软件支持：
+
+操作系统：CoreOS / Linux / Android
+
+开发环境：完整SDK/工具链
+
+示例代码：丰富示例项目
+
+教程文档：详细开发教程
+
+六、产品对比总览
+产品	定位	核心特性	价格区间
+CoreWatch 7	健康监测	7天续航、100+运动	¥1,999
+CoreWatch 7 Pro	专业运动	14天续航、卫星通信	¥3,499
+CoreWatch 7 Ultra	极限户外	30天续航、脑电监测	¥5,999
+CoreBook 7 Air	超轻薄	980g、18小时续航	¥7,999
+CoreBook 7	标准版	均衡性能、120Hz	¥10,999
+CoreBook 7 Pro	专业创作	独显、MiniLED	¥16,999
+CoreBook 7 Studio	创作旗舰	顶级配置、8K输出	¥29,999
+CoreTV 7	家庭娱乐	4K QLED、120Hz	¥4,999起
+CoreTV 7 Pro	影音旗舰	MiniLED、144Hz	¥9,999起
+CoreTV 7 Ultra	极致影音	8K MicroLED、240Hz	¥49,999起
+CoreBoard 7	创客开发	丰富接口、开源	¥999
+CoreBoard 7 Pro	专业开发	高性能、多扩展	¥2,499
+七、结语
+Core终端产品系列覆盖生活的方方面面——从手腕到桌面，从家庭到工作室，Core生态无处不在。每一款产品都秉承开放、自由、共建的理念，让技术真正服务于人。
+
+More Core, More Possible.
+
+八、版本历史
+版本	日期	变更内容	作者
+1.0.0	2026-06-24	初始正式存档版本，完整收录CoreWatch/CoreBook/CoreTV/CoreBoard四大产品线规格	CRADT
+本文档为Core终端产品系列正式存档版本，覆盖从穿戴到家庭的全终端产品生态。
+
+More Core, More Possible.
