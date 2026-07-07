@@ -1,0 +1,221 @@
+CoreCPU 完整产品线
+命名规则
+格式：Core [代际] Gen [级别] [版本]
+后缀	含义	定位
+Mobile	移动版	手机/平板
+(无)	标准版	桌面/笔记本
+Pro	专业版	工作站
+Max	极致版	旗舰桌面
+Server	服务器版	数据中心
+Edge	边缘版	边缘计算
+ 
+第7代 CoreCPU 产品线 (2025-2026)
+移动系列
+Core 7 Gen 1 Mobile
+入门级移动处理器
+•	制程：3nm TSMC N3E
+•	核心：2P + 4E (6核6线程)
+•	频率：P核 3.2GHz / E核 2.1GHz
+•	缓存：L1 4MB / L2 12MB / L3 16MB
+•	GPU：8CU RDNA3.5 / 1.8GHz
+•	NPU：15 TOPS
+•	TDP：5-15W
+•	定位：轻薄本、平板
+Core 7 Gen 3 Mobile
+主流移动处理器
+•	制程：3nm TSMC N3E
+•	核心：4P + 4E (8核12线程)
+•	频率：P核 3.8GHz / E核 2.6GHz
+•	缓存：L1 6MB / L2 20MB / L3 24MB
+•	GPU：12CU RDNA3.5 / 2.2GHz
+•	NPU：25 TOPS
+•	TDP：15-28W
+•	定位：全能本、游戏本入门
+Core 7 Gen 5 Mobile
+高端移动处理器
+•	制程：3nm TSMC N3E
+•	核心：6P + 4E (10核16线程)
+•	频率：P核 4.5GHz / E核 3.0GHz
+•	缓存：L1 8MB / L2 28MB / L3 36MB
+•	GPU：16CU RDNA3.5 / 2.6GHz
+•	NPU：40 TOPS
+•	TDP：28-45W
+•	定位：高性能游戏本、移动工作站
+Core 7 Gen 7 Mobile
+旗舰移动处理器
+•	制程：2nm TSMC N2
+•	核心：8P + 4E (12核20线程)
+•	频率：P核 5.2GHz / E核 3.5GHz
+•	缓存：L1 10MB / L2 36MB / L3 48MB
+•	GPU：20CU RDNA4 / 3.0GHz
+•	NPU：60 TOPS
+•	TDP：45-65W
+•	定位：旗舰游戏本、顶级移动工作站
+ 
+桌面系列
+Core 7 Gen 1
+入门级桌面处理器
+•	制程：3nm TSMC N3E
+•	核心：4P + 4E (8核12线程)
+•	频率：P核 4.0GHz / E核 2.8GHz
+•	缓存：L1 6MB / L2 20MB / L3 24MB
+•	GPU：12CU RDNA3.5 / 2.0GHz
+•	NPU：20 TOPS
+•	TDP：35-65W
+•	定位：家用办公、轻度创作
+Core 7 Gen 3
+主流桌面处理器
+•	制程：3nm TSMC N3E
+•	核心：6P + 6E (12核18线程)
+•	频率：P核 4.8GHz / E核 3.2GHz
+•	缓存：L1 9MB / L2 30MB / L3 36MB
+•	GPU：16CU RDNA3.5 / 2.4GHz
+•	NPU：35 TOPS
+•	TDP：65-125W
+•	定位：游戏、内容创作
+Core 7 Gen 5
+高端桌面处理器
+•	制程：3nm TSMC N3E
+•	核心：8P + 8E (16核24线程)
+•	频率：P核 5.4GHz / E核 3.6GHz
+•	缓存：L1 12MB / L2 40MB / L3 48MB
+•	GPU：20CU RDNA3.5 / 2.8GHz
+•	NPU：50 TOPS
+•	TDP：125-200W
+•	定位：专业创作、高端游戏
+Core 7 Gen 7
+旗舰桌面处理器
+•	制程：2nm TSMC N2
+•	核心：8P + 8E (16核24线程)
+•	频率：P核 5.8GHz / E核 4.0GHz
+•	缓存：L1 12MB / L2 48MB / L3 64MB
+•	GPU：24CU RDNA4 / 3.2GHz
+•	NPU：75 TOPS
+•	TDP：150-250W
+•	定位：旗舰桌面、发烧级
+Core 7 Gen 7 Pro
+专业工作站处理器
+•	制程：2nm TSMC N2
+•	核心：12P + 8E (20核32线程)
+•	频率：P核 5.5GHz / E核 3.8GHz
+•	缓存：L1 16MB / L2 56MB / L3 80MB
+•	GPU：32CU RDNA4 / 3.0GHz
+•	NPU：100 TOPS
+•	TDP：200-350W
+•	定位：专业工作站、工程计算
+Core 7 Gen 7 Max
+极致旗舰处理器
+•	制程：2nm TSMC N2
+•	核心：16P + 8E (24核40线程)
+•	频率：P核 5.2GHz / E核 3.6GHz
+•	缓存：L1 20MB / L2 72MB / L3 128MB
+•	GPU：48CU RDNA4 / 2.8GHz
+•	NPU：150 TOPS
+•	TDP：250-450W
+•	定位：极致性能、HEDT平台
+ 
+服务器系列
+Core 7 Gen 5 Server
+通用服务器处理器
+•	制程：3nm TSMC N3E
+•	核心：32P + 16E (48核80线程)
+•	频率：P核 4.0GHz / E核 2.8GHz
+•	缓存：L1 36MB / L2 144MB / L3 256MB
+•	内存：12通道 DDR5-6400 / 最大3TB
+•	NPU：200 TOPS
+•	TDP：200-350W
+•	定位：通用服务器、云计算
+Core 7 Gen 7 Server
+高性能服务器处理器
+•	制程：2nm TSMC N2
+•	核心：48P + 24E (72核120线程)
+•	频率：P核 4.2GHz / E核 3.0GHz
+•	缓存：L1 54MB / L2 216MB / L3 384MB
+•	内存：16通道 DDR5-7200 / 最大6TB
+•	NPU：350 TOPS
+•	TDP：300-500W
+•	定位：高性能计算、AI推理
+Core 7 Gen 7 Server Max
+极致服务器处理器
+•	制程：2nm TSMC N2
+•	核心：64P + 32E (96核160线程)
+•	频率：P核 4.0GHz / E核 2.8GHz
+•	缓存：L1 72MB / L2 288MB / L3 512MB
+•	内存：16通道 DDR5-7200 / 最大12TB
+•	NPU：500 TOPS
+•	TDP：400-700W
+•	定位：超大规模计算、AI训练
+ 
+边缘计算系列
+Core 7 Gen 3 Edge
+边缘计算处理器
+•	制程：3nm TSMC N3E
+•	核心：8P + 8E (16核24线程)
+•	频率：P核 3.6GHz / E核 2.4GHz
+•	缓存：L1 12MB / L2 40MB / L3 48MB
+•	NPU：80 TOPS
+•	TDP：35-75W
+•	定位：边缘服务器、工业控制
+Core 7 Gen 5 Edge
+AI边缘处理器
+•	制程：3nm TSMC N3E
+•	核心：12P + 8E (20核32线程)
+•	频率：P核 4.0GHz / E核 2.8GHz
+•	缓存：L1 16MB / L2 56MB / L3 80MB
+•	NPU：150 TOPS
+•	TDP：50-100W
+•	定位：AI边缘推理、智能网关
+ 
+第8代 CoreCPU 前瞻 (2027-2028)
+革命性特性预览
+•	制程突破：1.4nm GAA晶体管
+•	3D堆叠：SoIC 3D封装技术
+•	光互连：芯片间光通信
+•	神经形态：类脑计算单元集成
+•	量子安全：后量子加密原生支持
+预期型号
+型号	核心	频率	NPU	TDP
+Core 8 Gen 1 Mobile	4P+6E	P4.0/E2.5	40T	5-15W
+Core 8 Gen 5 Mobile	8P+6E	P5.5/E3.5	80T	28-45W
+Core 8 Gen 1	6P+8E	P4.8/E3.2	50T	35-65W
+Core 8 Gen 5	10P+10E	P6.0/E4.0	100T	125-200W
+Core 8 Gen 7 Max	20P+12E	P5.8/E3.8	250T	250-450W
+Core 8 Gen 5 Server	48P+32E	P4.5/E3.0	400T	250-400W
+ 
+CoreCPU 核心技术特性
+1. DF微架构
+•	乱序执行：512条指令窗口
+•	分支预测：神经网络辅助预测，准确率>98%
+•	预取引擎：AI驱动的智能预取
+•	内存子系统：统一寻址，硬件一致性
+2. 自适应功耗管理
+•	场景感知：根据工作负载自动调整
+•	毫秒级响应：功耗调整延迟<1ms
+•	精细控制：每核心独立调压调频
+•	预测调度：基于AI的负载预测
+3. 异构调度
+•	全局调度器：硬件级任务分配
+•	线程亲和性：智能绑定最优核心
+•	能耗感知：性能/功耗最优平衡
+•	实时迁移：无感任务迁移
+4. 安全架构
+•	可信执行环境：硬件级隔离
+•	内存加密：全内存AES-256加密
+•	后量子加密：CRYSTALS-Dilithium原生加速
+•	安全启动：链式验证，防回滚
+5. AI加速
+•	NPU集成：每代性能翻倍
+•	混合精度：INT4/INT8/FP8/FP16/BF16
+•	稀疏加速：结构化稀疏2:4/4:8
+•	Transformer优化：专用Attention加速
+ 
+硬件永生承诺
+代际	原生支持	模拟支持
+Core 7	Core 7/6/5	Core 4/3/2/1
+Core 6	Core 6/5/4	Core 3/2/1
+Core 5	Core 5/4/3	Core 2/1
+承诺：每一代CoreCPU保证至少10年固件更新支持，15年安全补丁支持。
+ 
+结语
+CoreCPU不仅是处理器，更是Core生态的计算基石。从移动设备到数据中心，从边缘节点到超级计算机，CoreCPU以统一的架构、开放的生态、永生的承诺，为每一位用户提供可信赖的计算力。
+More Core, More Possible.

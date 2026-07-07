@@ -1,0 +1,14 @@
+Core Phone（模块化）
+Core Gen 7Mobile 2纳米制程 5.5GHz 3P +3.5GHz 6E
+Core Cen 7Mobile 2纳米制程 4750流处理器
+Core Den 5 50000mAH IceSword
+Core Wen 8 1024GB GDDR8
+Core Sen 5 10240GB NVME5
+Core Len 7MAX 第八代通信技术支持，50Gbps下载&上载
+Core LSen 7MobilePro 8.0声道，超立体声
+Core Ben 7UltraMobile 特别通用版本，支持模块热插拔，模块规格：2cm*2cm*0.5cm（长*宽*高）
+最多支持2*3个模块
+Core Ken 7Ultra 7500转*2超薄主动制冷+极点全板液冷
+Core Men 7Ultra 800G像素（6,992,743,628,800），潜望+显微
+Core Aen 7Desktop AES2048级加密
+CoreOS6 镜花水月，基于CoreKernel6London

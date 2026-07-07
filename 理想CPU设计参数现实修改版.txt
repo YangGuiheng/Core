@@ -1,0 +1,26 @@
+极限理想芯片: DF SuperCore 1 Gen X (2035工程版)
+主频: 5.0GHz (全核) / 5.8GHz (双核睿频)
+核心: 8性能核 + 8能效核
+性能核频率: 5.0GHz
+能效核频率: 3.0GHz
+一级缓存: 1MB/性能核, 0.5MB/能效核 (总计 12MB)
+二级缓存: 4MB/性能核, 2MB/能效核 (总计 48MB)
+三级缓存: 64MB 系统级共享
+集成显卡: 是
+GPU主频: 2.5GHz
+GPU核心: 1024流处理器 (16 CU, RDNA4架构)
+GPU算力: 8.2 TFLOPS (FP32) / 16.4 TFLOPS (FP16)
+显存: 32MB 无限缓存 + 共享16GB LPDDR6
+集成NPU: 是
+NPU算力: 1200 TOPS (INT4) / 300 TFLOPS (FP8)
+AI大模型支持: 本地100B参数 (INT4量化, 50GB内存占用)
+CPU制程: 1.4nm TSMC A14 + GAA晶体管
+针脚数: 2848 (LGA-2848, 含内存接口)
+线程数: 32 (性能核超线程 SMT2)
+功耗: 45-125W (cTDP 可调)
+架构: ARMv9.5 (兼容x64转译, 效率92%)
+RAM支持: 256GB LPDDR6-10600 (八通道, 544GB/s)
+ROM支持: 8TB NVMe 5.0 x4 片上SSD控制器
+封装: 3D SoIC-3.5D (CPU+GPU+NPU+32GB HBM3堆叠)
+散热: 原生支持相变材料+ vapor chamber
+安全: 后量子加密加速器 (CRYSTALS-Dilithium)

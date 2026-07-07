@@ -1,0 +1,545 @@
+CoreSecuritySoftware for CoreOS
+软件概述
+CoreSecuritySoftware是CoreOS原生的安全套件，充分利用CoreOS的微内核架构、状态延续、场景感知等特性，为用户提供无感、智能、主权在民的安全体验。
+
+系统架构
+CoreOS原生集成
+text
+CoreOS Kernel (CoreKernel 6 London)
+├── CoreSecurity.kext (内核扩展)
+│   ├── 进程监控
+│   ├── 文件访问拦截
+│   ├── 网络过滤
+│   └── 权限 enforcement
+├── CoreSecurity.daemon (守护进程)
+│   ├── 行为分析引擎
+│   ├── 蜜罐管理
+│   ├── AI推理服务
+│   └── 云端同步
+└── CoreSecurity.app (用户界面)
+    ├── 状态延续服务
+    ├── 场景感知适配
+    ├── 隐私仪表板
+    └── 通知中心集成
+核心功能模块
+1. 蜜罐守护 (Honeypot Guardian)
+利用CoreOS能力：
+
+微内核IPC：蜜罐触发通过进程间通信实时通知守护进程
+
+硬件隔离：蜜罐账号由CoreKernel的硬件隔离层保护
+
+功能实现：
+
+swift
+// CoreOS原生API示例
+import CoreSecurity
+
+class HoneypotManager {
+    func monitorHoneypotAccess() {
+        // 注册蜜罐监控
+        CoreSecurity.monitorAccount("Administrator") { accessEvent in
+            // 任何访问Administrator账号的尝试都会触发
+            switch accessEvent.type {
+            case .loginAttempt:
+                // 登录尝试（无论成功失败）
+                self.triggerSandbox(process: accessEvent.process)
+            case .privilegeRequest:
+                // 请求以Administrator身份运行
+                self.triggerSandbox(process: accessEvent.process)
+            case .tokenAccess:
+                // 尝试获取Administrator令牌
+                self.triggerSandbox(process: accessEvent.process)
+            }
+        }
+    }
+    
+    func triggerSandbox(process: Process) {
+        // 调用CoreOS沙箱API
+        CoreSecurity.isolateProcess(
+            process,
+            mode: .strict,  // 严格模式：断网+文件重定向
+            reason: "触发了蜜罐账号"
+        )
+    }
+}
+2. 行为分析引擎 (Behavior Analysis Engine)
+利用CoreOS能力：
+
+NPU调度：自动调用CoreOS的AI子系统（CoreAI）
+
+联邦学习：利用CoreOS的隐私框架进行差分隐私聚合
+
+功能实现：
+
+组件	利用的CoreOS特性	说明
+本地AI推理	CoreML框架	调用NPU运行7B模型，分析进程行为
+行为日志	CoreFS + 加密存储	行为日志加密存储，只有本机可解密
+云端查询	CoreNet + 端到端加密	加密查询云端行为库，不泄露原始数据
+联邦学习	CorePrivacy框架	匿名贡献行为模式，不上传原始数据
+行为库管理：
+
+swift
+class BehaviorLibrary {
+    // 本地行为库状态
+    var localLibraryVersion: String
+    var localLibrarySize: Int
+    var lastUpdate: Date
+    
+    // 初始化时根据用户选择加载
+    func setup(initialChoice: UserChoice) {
+        switch initialChoice {
+        case .downloadFull:
+            // 下载完整行为库到本地
+            CoreCloud.downloadLibrary(to: .local)
+        case .queryOnly:
+            // 仅云端查询，本地不存储
+            configureCloudOnly()
+        case .askLater:
+            // 暂不配置，遇到威胁时再询问
+            setAskOnDemand()
+        }
+    }
+    
+    // 查询行为（本地优先，云端后备）
+    func queryBehavior(process: Process) async -> ThreatInfo? {
+        // 先查本地库
+        if let localResult = localLibrary.match(process.behavior) {
+            return localResult
+        }
+        
+        // 本地无结果，询问用户是否查云端
+        let userChoice = await askUser(
+            "Defender想要检索CoreSecurityCloud，是否允许？",
+            options: [.allow, .deny, .alwaysAllow]
+        )
+        
+        if userChoice == .allow || userChoice == .alwaysAllow {
+            // 端到端加密查询云端
+            return await cloudLibrary.query(process.behavior)
+        }
+        
+        return nil
+    }
+}
+3. 智能沙箱 (Smart Sandbox)
+利用CoreOS能力：
+
+微内核隔离：CoreOS原生支持进程级硬件隔离
+
+文件系统重定向：CoreFS支持每应用虚拟文件系统
+
+功能实现：
+
+swift
+class SmartSandbox {
+    // 严格模式隔离
+    func isolateStrict(process: Process, reason: String) {
+        // 调用CoreOS原生沙箱API
+        let sandbox = CoreSecurity.createSandbox(
+            for: process,
+            config: SandboxConfig(
+                network: .disconnected,        // 完全断网
+                filesystem: .redirected,       // 文件操作重定向
+                registry: .redirected,          // 注册表操作重定向
+                interprocess: .blocked,         // 禁止进程间通信
+                duration: .untilAnalysis        // 保持到分析结束
+            )
+        )
+        
+        // 记录隔离原因
+        CoreSecurity.log(
+            "进程 \(process.name) 已被隔离，原因: \(reason)",
+            level: .info
+        )
+        
+        // 通知用户（如必要）
+        if reason.contains("蜜罐") || reason.contains("高危") {
+            CoreNotification.post(
+                title: "可疑进程已隔离",
+                body: "\(process.name) 已被隔离分析，您的系统是安全的。"
+            )
+        }
+    }
+    
+    // 宽松模式（用于行为分析）
+    func isolateObservation(process: Process) {
+        CoreSecurity.createSandbox(
+            for: process,
+            config: SandboxConfig(
+                network: .monitored,     // 网络连接被监控但不断开
+                filesystem: .redirected,  // 文件操作仍重定向
+                registry: .redirected,    // 注册表操作重定向
+                interprocess: .monitored, // 监控进程间通信
+                duration: .untilCompletion // 保持到分析完成
+            )
+        )
+    }
+}
+4. AI家族图谱 (AI Family Graph)
+利用CoreOS能力：
+
+CoreML框架：调用NPU运行本地AI模型
+
+状态延续：图谱分析状态可跨设备同步
+
+功能实现：
+
+swift
+import CoreML
+import CoreUI
+
+struct FamilyGraphView: View {
+    @State var targetProcess: Process
+    @State var familyGraph: [ProcessNode] = []
+    @State var isLoading = true
+    
+    var body: some View {
+        VStack {
+            if isLoading {
+                ProgressView("正在分析软件家族关系...")
+                    .onAppear {
+                        analyzeFamily()
+                    }
+            } else {
+                // 显示家族图谱
+                List(familyGraph, children: \.children) { node in
+                    HStack {
+                        Image(systemName: node.type.icon)
+                            .foregroundColor(node.type.color)
+                        Text(node.name)
+                        Spacer()
+                        Text(node.relationship)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                // 底部操作
+                HStack {
+                    Button("取消") {
+                        dismiss()
+                    }
+                    Button("连根拔起") {
+                        removeAll()
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                .padding()
+            }
+        }
+        .frame(width: 600, height: 400)
+        .navigationTitle("软件家族关系")
+    }
+    
+    func analyzeFamily() {
+        // 调用CoreML进行AI分析
+        let model = try! CoreML.loadModel("FamilyGraph-7B")
+        
+        // 分析目标进程
+        let result = model.predict([
+            "process": targetProcess,
+            "include_history": true,
+            "depth": 3  // 分析三层关联
+        ])
+        
+        // 解析结果
+        familyGraph = result.nodes
+        isLoading = false
+    }
+    
+    func removeAll() {
+        // 调用CoreOS的连根拔起API
+        CoreSecurity.removeFamily(
+            root: targetProcess,
+            including: familyGraph.flatMap { $0.allChildren }
+        )
+        
+        // 通知用户
+        CoreNotification.post(
+            title: "清理完成",
+            body: "已移除 \(targetProcess.name) 及其关联的 \(familyGraph.count - 1) 个组件"
+        )
+        
+        dismiss()
+    }
+}
+5. 无感修复 (Seamless Fix)
+利用CoreOS能力：
+
+热修复框架：CoreOS原生支持内核级热补丁
+
+状态延续：修复状态可跨设备同步
+
+场景感知：根据使用场景选择修复时机
+
+功能实现：
+
+swift
+class SeamlessFix {
+    // 修复队列
+    var pendingFixes: [Fix] = []
+    var inProgressFix: Fix?
+    
+    // 添加修复任务
+    func addFix(_ fix: Fix) {
+        // 检查场景感知，选择最佳时机
+        let currentScene = CoreOS.currentScene
+        
+        if currentScene.canAcceptDelay {
+            // 用户不忙，立即执行
+            executeFix(fix)
+        } else {
+            // 用户忙，加入队列稍后执行
+            pendingFixes.append(fix)
+            
+            // 注册场景变化通知
+            CoreOS.onSceneChange { newScene in
+                if newScene.canAcceptDelay && !self.pendingFixes.isEmpty {
+                    self.executeNextFix()
+                }
+            }
+        }
+    }
+    
+    // 执行修复
+    func executeFix(_ fix: Fix) {
+        inProgressFix = fix
+        
+        // 调用CoreOS热修复API
+        CoreSecurity.hotfix(
+            fix: fix,
+            progress: { progress in
+                // 更新进度
+                self.updateProgress(progress)
+            },
+            completion: { result in
+                switch result {
+                case .success:
+                    // 修复成功
+                    self.fixSucceeded(fix)
+                case .failure(let error):
+                    // 修复失败，需要重启
+                    self.scheduleReboot(fix, error: error)
+                }
+            }
+        )
+        
+        // 给用户一个极简提示
+        CoreNotification.post(
+            title: "正在后台修复",
+            body: "系统正在自动修复，您可能会感到稍有卡顿",
+            display: .transient  // 短暂显示后自动消失
+        )
+    }
+    
+    // 需要重启的情况
+    func scheduleReboot(_ fix: Fix, error: Error) {
+        CoreNotification.post(
+            title: "需要重启完成修复",
+            body: "部分修复需要重启才能完成，请在方便时重启",
+            display: .persistent,  // 持续显示直到用户操作
+            actions: [
+                .init(title: "稍后", style: .cancel),
+                .init(title: "立即重启", style: .destructive) {
+                    CoreOS.reboot()
+                }
+            ]
+        )
+    }
+}
+6. 隐私仪表板 (Privacy Dashboard)
+利用CoreOS能力：
+
+CoreFS：访问所有文件操作日志
+
+CoreNet：访问所有网络连接日志
+
+场景感知：按场景分类权限使用
+
+功能实现：
+
+swift
+import CoreUI
+
+struct PrivacyDashboard: View {
+    @State var permissions: [PermissionUsage] = []
+    @State var selectedTimeRange: TimeRange = .last24h
+    
+    var body: some View {
+        List {
+            // 权限使用摘要
+            Section("权限使用摘要") {
+                ForEach(permissions.prefix(5)) { perm in
+                    HStack {
+                        Image(systemName: perm.type.icon)
+                        Text(perm.appName)
+                        Spacer()
+                        Text("\(perm.accessCount) 次")
+                        Text(perm.lastAccess, style: .relative)
+                            .font(.caption)
+                    }
+                }
+                NavigationLink("查看全部") {
+                    AllPermissionsView()
+                }
+            }
+            
+            // 敏感行为地图
+            Section("数据流向地图") {
+                PrivacyFlowMap()
+                    .frame(height: 200)
+            }
+            
+            // 应用权限详情
+            Section("应用权限详情") {
+                ForEach(allApps) { app in
+                    NavigationLink(app.name) {
+                        AppPermissionDetail(app: app)
+                    }
+                }
+            }
+            
+            // 一键清理
+            Section {
+                Button("清除所有临时权限授权") {
+                    CoreSecurity.revokeAllTemporaryPermissions()
+                }
+                .foregroundColor(.red)
+            }
+        }
+        .navigationTitle("隐私仪表板")
+        .onAppear {
+            loadData()
+        }
+    }
+    
+    func loadData() {
+        // 调用CoreOS隐私API
+        permissions = CoreSecurity.getPermissionLogs(
+            timeRange: selectedTimeRange
+        )
+    }
+}
+CoreOS特性深度集成
+1. 状态延续集成
+安全状态	同步内容	跨设备体验
+信任列表	用户信任的应用列表	新设备自动继承信任关系
+行为库版本	本地行为库版本号	新设备自动下载相同版本
+隔离记录	被隔离的应用列表	新设备自动隔离相同应用
+隐私设置	所有权限配置	新设备自动应用相同设置
+修复队列	待执行的修复任务	在任一设备确认，所有设备同步
+2. 场景感知集成
+场景	安全策略调整	用户感知
+工作模式	严格模式：所有外部应用需确认	无感（工作时不被打扰）
+娱乐模式	宽松模式：游戏/媒体应用优先	无感（享受时不卡顿）
+会议模式	静默模式：所有通知暂存	无感（会议时不弹窗）
+驾驶模式	语音播报关键安全事件	语音提示“检测到可疑行为”
+旅行模式	增强网络监控	无感（后台加强防护）
+3. 微内核安全集成
+CoreOS的微内核架构为CoreSecuritySoftware提供了天然优势：
+
+微内核特性	安全利用	效果
+进程隔离	每个应用运行在独立地址空间	恶意软件无法访问其他进程内存
+IPC监控	所有进程间通信必经内核	可监控/拦截恶意通信
+能力-based安全	应用只有被授予的能力	即使被攻破，破坏范围有限
+硬件隔离	关键服务运行在特权层	安全服务本身难以被攻击
+用户界面设计
+设计语言：Fluid Security
+延续CoreOS的Fluid Design，安全软件也遵循同样的设计原则：
+
+连续性：安全状态变化流畅过渡
+
+响应性：用户操作即时反馈
+
+适应性：自适应不同设备/场景
+
+层次性：重要信息突出，次要信息隐藏
+
+主要界面
+状态栏图标（常态）
+text
+[盾牌图标] (正常状态 - 淡灰色)
+[盾牌图标·微光] (后台有活动 - 呼吸动画)
+[盾牌图标·红点] (有待处理事件 - 红点提示)
+[盾牌图标·警示] (需要用户操作 - 黄色警示)
+主窗口（双击图标打开）
+text
+┌─────────────────────────────────────┐
+│ CoreSecuritySoftware          - □ x │
+├─────────────────────────────────────┤
+│ 状态：✓ 您的系统是安全的              │
+│ 最后扫描：刚刚 (实时防护)             │
+├─────────────────────────────────────┤
+│ [隐私仪表板] [隔离区] [信任列表] [日志]│
+├─────────────────────────────────────┤
+│ 最近事件：                           │
+│ • 10:23 可疑进程已隔离 (鲁大师)       │
+│ • 09:15 行为库已更新 (v2026.58)      │
+│ • 昨天 22:30 系统扫描完成 (无威胁)    │
+├─────────────────────────────────────┤
+│ [立即扫描] [查看报告] [设置]          │
+└─────────────────────────────────────┘
+通知样式
+轻度通知（短暂显示，自动消失）：
+
+text
+┌─────────────────────┐
+│ ⚫ 可疑进程已隔离     │
+│     鲁大师已被隔离分析│
+└─────────────────────┘
+中度通知（需要确认）：
+
+text
+┌─────────────────────────┐
+│ ⚠️ 需要您的确认           │
+│     应用“×××”试图访问摄像头│
+│   [允许本次] [始终允许] [拒绝]│
+└─────────────────────────┘
+重度通知（紧急情况）：
+
+text
+┌─────────────────────────┐
+│ 🔴 严重安全警告           │
+│     检测到恶意软件“×××”  │
+│     已自动清理，无需操作  │
+│         [查看详情]       │
+└─────────────────────────┘
+技术规格
+组件	规格	说明
+安装包大小	150MB	基础安装
+本地行为库	2GB ~ 8GB	可选下载
+内存占用	50MB ~ 200MB	日常运行
+CPU占用	<1%	日常监控
+NPU占用	0% ~ 20%	AI分析时
+首次配置	3分钟	含行为库下载
+更新频率	每日	行为库增量更新
+开源承诺
+CoreSecuritySoftware遵循Core生态的开源承诺：
+
+组件	许可证	说明
+用户界面	MIT	完全开源
+行为分析引擎	Apache 2.0	核心算法开源
+AI模型	CoreML Model License	模型权重开放
+内核扩展	GPL v3	强制开源
+云端服务	专有	但API完全开放
+结语
+CoreSecuritySoftware for CoreOS不是一款“杀毒软件”，它是CoreOS原生的数字免疫系统：
+
+它利用CoreOS的微内核架构，实现硬件级隔离
+
+它调用CoreOS的NPU调度，运行本地AI分析
+
+它集成CoreOS的状态延续，安全设置跨设备同步
+
+它适配CoreOS的场景感知，在不同场景智能调整
+
+它遵守CoreOS的隐私优先，用户完全掌控数据
+
+无感安全，主权在民。
+
+这才是运行在CoreOS上的、真正的CoreSecuritySoftware。
+
+Core与你同频，信息予你无限，未来与你同在。
+
+More Core, More Secure.

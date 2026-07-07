@@ -1,0 +1,5 @@
+CLSDN：Core Link Server Devices Network
+基于CLS协议与WLCLS、WLHBM实现组网
+以星状实现（默认），也可选环形或全网状拓扑
+最大进行四层组网（星型），即CNBP-WLCLS-WLCLS-WLCLS-WLCLS（每一台WLCLS下附加三台WLCLS，二级WLCLS完全挂载WLHBM）
+连接状态：光、光纤、STP/UTP

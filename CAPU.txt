@@ -1,0 +1,9 @@
+Core APU 玄央
+1、璇玑弄巧，天象绘形
+采用CGLink，硬件级优化CPU与GPU连接，内置NPU，离线算力1KTOPS，CPU核心包含ARM性能核，ARM能效核，X64能效核，核心数6+18+4，至高18+24+8，主频为3GHz+2GHz+2.4GHz，TurboBoost下为6GHz+5GHz+4GHz，GPU包含10240流处理器，主频3GHz，TurboBoost下可冲击6GHz，APU基准功耗：5W～500W
+2、海纳百川，包罗万象
+内置256GB，500GB/S统一内存，显存至高可独占128GB，可与承露台CHSR（Core High Spend RAM）300系列组合，至高512GB CHSR380 （NPU可共享），至高支持16TBSSD或金玉阁CTSNF（Core Turbo Spend Nand Flash）200系列32TBMSSD（Max SSD），如CTNSF280-2048*16
+3、冰清玉洁，坚如磐石
+APU采用模块化设计，Core Tiny 1.5nm工艺赋予基于物理特性的极大可能，全U覆盖铜-钛合金，兼顾散热与结构强度，针对极端强度环境仍能得心应手，方寸之间，无限可能
+4、两仪太一，八铸乾坤
+基于Core8太一，为APU深度定制CoreOS8 BeiJing RTOS，对该APU定向优化，软硬件协同，同时采用CSM（Core Safety Module），调用CAI进行常驻式后台检查，通过多维权限模型，保证随时可撤销任何授权

@@ -1,0 +1,293 @@
+CorePhone 完整规格与生态
+产品理念
+CorePhone不仅是一部手机，更是你数字生活的权杖——Core生态的掌上核心。它承载算力、连接万物、延续状态，让数字生活真正属于你。
+ 
+第7代 CorePhone 产品线 (2025-2026)
+CorePhone 7
+标准版
+核心模块 (Core Gen 7Mobile)
+•	制程：2nm TSMC N2
+•	CPU：4P + 4E (8核12线程)
+•	频率：P核 4.5GHz / E核 2.8GHz
+•	GPU：集成16CU RDNA4
+•	NPU：50 TOPS
+•	TDP：5-15W
+图形模块 (Core Cen 7Mobile)
+•	制程：2nm
+•	流处理器：2048
+•	频率：2.0GHz
+•	显存：共享16GB LPDDR6
+•	光追：支持硬件光追
+内存模块 (Core Wen 7)
+•	容量：16GB LPDDR6
+•	带宽：256GB/s
+•	类型：四通道
+存储模块 (Core Sen 7)
+•	容量：512GB NVMe 4.0
+•	读取：7000MB/s
+•	写入：5000MB/s
+电源模块 (Core Den 7)
+•	容量：5000mAh
+•	快充：120W有线 / 50W无线
+•	技术：IceSword智能温控
+通信模块 (Core Len 7)
+•	5G：Sub-6GHz + mmWave
+•	WiFi：WiFi 7 (802.11be)
+•	蓝牙：Bluetooth 6.0
+•	NFC：支持
+•	下载：10Gbps / 上传：5Gbps
+显示模块 (Core SHen 7)
+•	尺寸：6.7英寸
+•	分辨率：3200×1440 (2K+)
+•	刷新率：1-144Hz LTPO
+•	亮度：2500nits峰值
+•	技术：OLED + 高频PWM调光
+影像模块 (Core Men 7)
+•	主摄：200MP (2亿像素)
+•	超广角：50MP
+•	长焦：50MP 5x光学
+•	微距：20MP
+•	视频：8K60fps录制
+音频模块 (Core LSen 7)
+•	扬声器：立体声双扬
+•	声道：支持空间音频
+•	降噪：AI通话降噪
+散热模块 (Core Ken 7)
+•	类型：VC均热板 + 石墨烯
+•	风扇：无风扇被动散热
+安全模块 (Core Aen 7)
+•	加密：AES-256硬件加密
+•	生物：超声波屏下指纹 + 3D结构光
+•	安全芯片：独立TEE
+ 
+CorePhone 7 Pro
+专业版
+核心模块 (Core Gen 7Mobile Pro)
+•	制程：2nm TSMC N2
+•	CPU：6P + 4E (10核16线程)
+•	频率：P核 5.0GHz / E核 3.0GHz
+•	GPU：集成20CU RDNA4
+•	NPU：75 TOPS
+•	TDP：8-20W
+图形模块 (Core Cen 7Mobile Pro)
+•	制程：2nm
+•	流处理器：2560
+•	频率：2.2GHz
+•	显存：共享24GB LPDDR6
+内存模块 (Core Wen 7 Pro)
+•	容量：24GB LPDDR6
+•	带宽：320GB/s
+存储模块 (Core Sen 7 Pro)
+•	容量：1TB NVMe 4.0
+•	读取：8000MB/s
+•	写入：6000MB/s
+电源模块 (Core Den 7 Pro)
+•	容量：5500mAh
+•	快充：150W有线 / 80W无线
+•	技术：IceSword Pro双电芯
+通信模块 (Core Len 7 Pro)
+•	5G：双卡双5G
+•	卫星：支持卫星通信
+•	下载：15Gbps / 上传：8Gbps
+显示模块 (Core SHen 7 Pro)
+•	尺寸：6.8英寸
+•	分辨率：3200×1440
+•	刷新率：1-165Hz LTPO
+•	亮度：3000nits峰值
+影像模块 (Core Men 7 Pro)
+•	主摄：200MP 1英寸大底
+•	超广角：64MP
+•	长焦：64MP 10x光学潜望
+•	微距：32MP 显微镜级
+•	视频：8K120fps录制
+音频模块 (Core LSen 7 Pro)
+•	扬声器：四扬声器阵列
+•	声道：支持杜比全景声
+散热模块 (Core Ken 7 Pro)
+•	类型：VC均热板 + 微泵液冷
+•	风扇：超薄主动风扇 (7500rpm)
+安全模块 (Core Aen 7 Pro)
+•	加密：AES-512硬件加密
+•	生物：超声波指纹 + 3D结构光 + 虹膜
+ 
+CorePhone 7 Ultra
+极致版
+核心模块 (Core Gen 7Mobile Ultra)
+•	制程：2nm TSMC N2
+•	CPU：8P + 4E (12核20线程)
+•	频率：P核 5.5GHz / E核 3.5GHz
+•	GPU：集成24CU RDNA4
+•	NPU：100 TOPS
+•	TDP：10-25W
+图形模块 (Core Cen 7Mobile Ultra)
+•	制程：2nm
+•	流处理器：3072
+•	频率：2.4GHz
+•	显存：共享32GB LPDDR6
+内存模块 (Core Wen 7 Ultra)
+•	容量：32GB LPDDR6
+•	带宽：400GB/s
+存储模块 (Core Sen 7 Ultra)
+•	容量：2TB NVMe 4.0
+•	读取：10000MB/s
+•	写入：8000MB/s
+电源模块 (Core Den 7 Ultra)
+•	容量：6000mAh
+•	快充：200W有线 / 100W无线
+•	技术：IceSword Ultra石墨烯电池
+通信模块 (Core Len 7 Ultra)
+•	5G：三频5G
+•	卫星：双向卫星通信
+•	下载：20Gbps / 上传：10Gbps
+显示模块 (Core SHen 7 Ultra)
+•	尺寸：7.0英寸
+•	分辨率：3840×2160 (4K)
+•	刷新率：1-240Hz LTPO
+•	亮度：3500nits峰值
+•	技术：MicroLED
+影像模块 (Core Men 7 Ultra)
+•	主摄：400MP 1英寸大底
+•	超广角：100MP
+•	长焦：100MP 20x光学潜望
+•	微距：50MP 显微镜级
+•	视频：8K240fps录制
+音频模块 (Core LSen 7 Ultra)
+•	扬声器：八扬声器阵列
+•	声道：支持杜比全景声 + 空间音频
+散热模块 (Core Ken 7 Ultra)
+•	类型：VC均热板 + 微泵液冷 + 相变材料
+•	风扇：双超薄主动风扇 (7500rpm×2)
+安全模块 (Core Aen 7 Ultra)
+•	加密：AES-512 + 后量子加密
+•	生物：超声波指纹 + 3D结构光 + 虹膜 + 静脉
+ 
+模块化设计
+CorePhone 模块系统
+CorePhone采用革命性的模块化设计，核心模块可热插拔更换。
+模块规格
+•	尺寸：2cm × 2cm × 0.5cm
+•	接口：CoreLink高速接口 (100GB/s)
+•	插槽：2×3 矩阵布局 (最多6个模块)
+可更换模块
+模块类型	代号	功能
+核心模块	Gen	CPU/GPU/NPU
+图形模块	Cen	独立GPU
+内存模块	Wen	RAM扩展
+存储模块	Sen	存储扩展
+电源模块	Den	电池/快充
+通信模块	Len	5G/WiFi/卫星
+影像模块	Men	相机系统
+音频模块	LSen	扬声器/音频
+散热模块	Ken	散热系统
+安全模块	Aen	安全芯片
+模块兼容性
+•	同代兼容：Core 7 系列模块互通
+•	向下兼容：Core 7 支持 Core 6 模块
+•	热插拔支持：运行中更换部分模块
+ 
+CoreOS 6 “镜花水月”
+系统核心
+•	内核：CoreKernel 6 London
+•	架构：微内核 + 外核混合
+•	安全：硬件级隔离 + 形式化验证
+•	性能：零拷贝 + 内核旁路
+核心特性
+1. 状态延续 (State Continuity)
+•	应用状态：任意应用状态云端同步
+•	系统状态：完整系统镜像备份
+•	无缝切换：跨设备状态恢复
+•	离线优先：本地优先，云端同步
+2. 算力调度 (Compute Orchestration)
+•	本地算力：调度本机CPU/GPU/NPU
+•	边缘算力：调度附近Core设备
+•	云端算力：调度CoreCloud资源
+•	智能分配：AI自动选择最优算力
+3. 场景感知 (Context Awareness)
+•	环境感知：自动识别使用场景
+•	资源预判：预测资源需求
+•	能耗优化：场景化功耗管理
+•	交互适配：场景化UI调整
+4. 隐私优先 (Privacy First)
+•	数据主权：用户完全拥有数据
+•	本地处理：敏感数据本地处理
+•	端到端加密：所有通信加密
+•	零知识架构：服务端无法解密
+界面设计
+•	设计语言：Fluid Design 流体设计
+•	交互方式：手势 + 语音 + 眼动 + 脑机
+•	自适应UI：根据场景自动调整
+•	无障碍：全面无障碍支持
+ 
+CoreLink 手机互联
+设备发现
+•	自动发现：附近Core设备自动发现
+•	一键连接：NFC触碰快速配对
+•	安全认证：硬件级身份验证
+互联场景
+1. 屏幕扩展 (DisplayLink)
+•	无线投屏：低延迟无线投屏
+•	多屏协同：手机作为电脑副屏
+•	反向控制：电脑控制手机屏幕
+2. 算力共享 (ComputeLink)
+•	算力借用：借用电脑GPU渲染
+•	分布式计算：多设备协同计算
+•	AI加速：NPU算力共享
+3. 文件同步 (FileLink)
+•	实时同步：文件跨设备实时同步
+•	智能分类：AI自动分类整理
+•	版本管理：文件版本历史
+4. 通知同步 (NotifyLink)
+•	统一通知：所有设备通知同步
+•	智能过滤：AI过滤垃圾通知
+•	快捷回复：任意设备回复消息
+ 
+CoreCloud 手机云
+云备份
+•	完整备份：整机云端备份
+•	增量同步：仅同步变化部分
+•	多版本：保留30天历史版本
+•	加密存储：端到端加密
+云算力
+•	云端渲染：复杂任务云端渲染
+•	AI推理：大模型云端推理
+•	游戏串流：云端游戏串流
+云同步
+•	状态同步：应用状态实时同步
+•	设置同步：系统设置云端同步
+•	密码同步：密码库安全同步
+ 
+硬件规格对比
+规格	CorePhone 7	CorePhone 7 Pro	CorePhone 7 Ultra
+CPU	4P+4E	6P+4E	8P+4E
+内存	16GB	24GB	32GB
+存储	512GB	1TB	2TB
+电池	5000mAh	5500mAh	6000mAh
+快充	120W	150W	200W
+主摄	200MP	200MP 1英寸	400MP 1英寸
+屏幕	6.7” 2K 144Hz	6.8” 2K 165Hz	7.0” 4K 240Hz
+模块槽	4个	5个	6个
+价格	¥5999	¥8999	¥12999
+ 
+包装内容
+CorePhone 7
+•	CorePhone 7 主机
+•	Core Gen 7Mobile 模块 (已安装)
+•	Core Den 7 电源模块 (已安装)
+•	Core Len 7 通信模块 (已安装)
+•	Core SHen 7 显示模块 (已安装)
+•	120W 快充充电器
+•	CoreLink USB-C 数据线
+•	保护壳
+•	取卡针
+•	快速入门指南
+CorePhone 7 Pro/Ultra
+•	额外包含：
+–	无线充电器
+–	USB-C 转 HDMI 转接线
+–	专业保护壳
+–	屏幕保护膜
+ 
+结语
+CorePhone是Core生态的掌上核心，它不仅是手机，更是你数字生活的延伸。模块化设计让硬件永生，CoreOS让体验延续，CoreLink让万物互联。
+Core与你同频，信息予你无限，未来与你同在。
+More Core, More Possible.

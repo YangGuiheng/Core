@@ -1,0 +1,258 @@
+CoreGPU 完整规格
+命名规则
+格式：Core [代际] Cen [级别] [版本]
+后缀	含义	定位
+Mobile	移动版	笔记本/嵌入式
+(无)	标准版	桌面独显
+Pro	专业版	工作站/创作
+Server	服务器版	数据中心
+AI	AI加速版	推理/训练专用
+ 
+第7代 CoreGPU 产品线 (2025-2026)
+移动系列
+Core 7 Cen 3 Mobile
+入门级移动独显
+•	制程：5nm TSMC N5
+•	架构：RDNA 3.5
+•	计算单元：16 CU
+•	流处理器：1024
+•	频率：2.0GHz
+•	显存：6GB GDDR6 / 96-bit / 192GB/s
+•	无限缓存：32MB
+•	光追单元：16个
+•	AI单元：32个
+•	TDP：35-50W
+•	定位：轻薄游戏本、创作本
+Core 7 Cen 5 Mobile
+主流移动独显
+•	制程：5nm TSMC N5
+•	架构：RDNA 3.5
+•	计算单元：24 CU
+•	流处理器：1536
+•	频率：2.4GHz
+•	显存：8GB GDDR6 / 128-bit / 256GB/s
+•	无限缓存：48MB
+•	光追单元：24个
+•	AI单元：48个
+•	TDP：50-80W
+•	定位：主流游戏本
+Core 7 Cen 7 Mobile
+高端移动独显
+•	制程：4nm TSMC N4P
+•	架构：RDNA 4
+•	计算单元：32 CU
+•	流处理器：2048
+•	频率：2.6GHz
+•	显存：12GB GDDR6 / 192-bit / 384GB/s
+•	无限缓存：64MB
+•	光追单元：32个
+•	AI单元：64个
+•	TDP：80-120W
+•	定位：高端游戏本
+Core 7 Cen 7 Mobile Pro
+旗舰移动独显
+•	制程：4nm TSMC N4P
+•	架构：RDNA 4
+•	计算单元：40 CU
+•	流处理器：2560
+•	频率：2.8GHz
+•	显存：16GB GDDR6 / 256-bit / 512GB/s
+•	无限缓存：80MB
+•	光追单元：40个
+•	AI单元：80个
+•	TDP：120-165W
+•	定位：旗舰游戏本、移动工作站
+ 
+桌面系列
+Core 7 Cen 3
+入门级桌面独显
+•	制程：5nm TSMC N5
+•	架构：RDNA 3.5
+•	计算单元：24 CU
+•	流处理器：1536
+•	频率：2.4GHz
+•	显存：8GB GDDR6 / 128-bit / 256GB/s
+•	无限缓存：48MB
+•	光追单元：24个
+•	AI单元：48个
+•	TDP：75-120W
+•	定位：1080p游戏、入门创作
+Core 7 Cen 5
+主流桌面独显
+•	制程：5nm TSMC N5
+•	架构：RDNA 3.5
+•	计算单元：40 CU
+•	流处理器：2560
+•	频率：2.6GHz
+•	显存：12GB GDDR6 / 192-bit / 384GB/s
+•	无限缓存：80MB
+•	光追单元：40个
+•	AI单元：80个
+•	TDP：120-180W
+•	定位：2K游戏、主流创作
+Core 7 Cen 7
+高端桌面独显
+•	制程：4nm TSMC N4P
+•	架构：RDNA 4
+•	计算单元：60 CU
+•	流处理器：3840
+•	频率：2.8GHz
+•	显存：16GB GDDR6 / 256-bit / 576GB/s
+•	无限缓存：128MB
+•	光追单元：60个
+•	AI单元：120个
+•	TDP：180-250W
+•	定位：4K游戏、专业创作
+Core 7 Cen 7 Pro
+专业工作站显卡
+•	制程：4nm TSMC N4P
+•	架构：RDNA 4 Pro
+•	计算单元：80 CU
+•	流处理器：5120
+•	频率：2.6GHz
+•	显存：24GB GDDR6 / 384-bit / 864GB/s
+•	无限缓存：192MB
+•	ECC支持：是
+•	光追单元：80个
+•	AI单元：160个
+•	TDP：250-350W
+•	定位：专业工作站、工程可视化
+Core 7 Cen 7 Max
+旗舰桌面独显
+•	制程：4nm TSMC N4P
+•	架构：RDNA 4
+•	计算单元：96 CU
+•	流处理器：6144
+•	频率：2.9GHz
+•	显存：24GB GDDR6X / 384-bit / 1008GB/s
+•	无限缓存：256MB
+•	光追单元：96个
+•	AI单元：192个
+•	TDP：300-450W
+•	定位：旗舰4K游戏、极致创作
+ 
+服务器/数据中心系列
+Core 7 Cen 5 Server
+通用计算加速卡
+•	制程：5nm TSMC N5
+•	架构：CDNA 3
+•	计算单元：80 CU
+•	流处理器：5120
+•	频率：2.0GHz
+•	显存：32GB HBM3 / 4096-bit / 3.2TB/s
+•	算力：FP32 20.5 TFLOPS / FP64 10.2 TFLOPS
+•	TDP：200-300W
+•	定位：科学计算、数据分析
+Core 7 Cen 7 Server
+高性能计算加速卡
+•	制程：4nm TSMC N4P
+•	架构：CDNA 4
+•	计算单元：128 CU
+•	流处理器：8192
+•	频率：2.2GHz
+•	显存：64GB HBM3 / 4096-bit / 3.5TB/s
+•	算力：FP32 36 TFLOPS / FP64 18 TFLOPS
+•	TDP：300-450W
+•	定位：HPC、大规模仿真
+Core 7 Cen 7 AI
+AI推理加速卡
+•	制程：4nm TSMC N4P
+•	架构：CDNA 4 AI
+•	AI单元：512个
+•	算力：INT8 800 TOPS / FP16 400 TFLOPS
+•	显存：48GB HBM3 / 4096-bit / 3.5TB/s
+•	稀疏加速：2:4/4:8结构化稀疏
+•	TDP：250-350W
+•	定位：大规模AI推理
+Core 7 Cen 7 AI Max
+AI训练加速卡
+•	制程：4nm TSMC N4P
+•	架构：CDNA 4 AI
+•	AI单元：1024个
+•	算力：FP8 1600 TFLOPS / BF16 800 TFLOPS
+•	显存：128GB HBM3 / 8192-bit / 7TB/s
+•	互连：CoreLink x8 / 800GB/s
+•	TDP：450-700W
+•	定位：大模型训练
+ 
+RDNA 4 架构特性
+1. 计算单元 (CU) 革新
+•	双发射设计：每周期2条wavefront
+•	向量单元：128位SIMD，支持多种数据类型
+•	标量单元：独立标量ALU
+•	纹理单元：每CU 4个，支持硬件光线追踪
+•	AI加速单元：每CU 2个，支持INT4/INT8/FP8/FP16
+2. 光线追踪 (Ray Tracing)
+•	硬件加速：每CU专用RT单元
+•	遍历加速：BVH遍历硬件加速
+•	交集测试：光线-三角形/包围盒硬件测试
+•	去噪支持：AI驱动的实时去噪
+3. 无限缓存 (Infinity Cache)
+•	3D堆叠：SRAM 3D堆叠技术
+•	高带宽：片上TB级带宽
+•	智能预取：AI驱动的缓存管理
+•	一致性：与CPU缓存硬件一致
+4. 显示引擎
+•	输出支持：HDMI 2.1 / DisplayPort 2.1
+•	分辨率：最高8K@120Hz / 4K@240Hz
+•	色深：12-bit HDR
+•	刷新率：VRR / FreeSync Premium Pro
+5. 媒体引擎
+•	解码：AV1 / H.265 / H.264 / VP9 硬件解码
+•	编码：AV1 / H.265 / H.264 硬件编码
+•	分辨率：8K60 编解码
+•	AI增强：AI超分、AI降噪
+ 
+CoreGPU 与 CoreCPU 协同
+统一内存架构 (UMA)
+•	共享地址空间：CPU/GPU统一寻址
+•	零拷贝传输：无需数据复制
+•	硬件一致性：缓存一致性由硬件维护
+•	灵活分配：内存按需动态分配
+CoreLink 互连
+•	高带宽：CPU-GPU 256GB/s
+•	低延迟：<1μs 通信延迟
+•	多GPU支持：最多8卡并行
+•	拓扑灵活：星型/环型/网状拓扑
+协同计算
+•	任务卸载：CPU自动 offload 到GPU
+•	负载均衡：动态任务分配
+•	能耗优化：选择最优执行单元
+•	编程简化：统一编程模型
+ 
+软件生态
+CoreGPU SDK
+•	底层API：CoreGPU HAL (硬件抽象层)
+•	图形API：CoreGFX (类Vulkan/DirectX12)
+•	计算API：CoreCompute (类CUDA/OpenCL)
+•	AI框架：CoreML (PyTorch/TensorFlow后端)
+开发者工具
+•	性能分析器：CoreProfiler
+•	调试器：CoreDebugger
+•	着色器编译器：CoreShader
+•	模拟器：CoreEmulator
+开源承诺
+•	驱动开源：用户态驱动完全开源
+•	文档开放：完整硬件文档
+•	社区共建：接受社区贡献
+•	硬件永生：旧代GPU持续维护
+ 
+硬件规格总览
+型号	CU	显存	TDP	定位
+Cen 3 Mobile	16	6GB	35-50W	入门移动
+Cen 5 Mobile	24	8GB	50-80W	主流移动
+Cen 7 Mobile	32	12GB	80-120W	高端移动
+Cen 7 Mobile Pro	40	16GB	120-165W	旗舰移动
+Cen 3	24	8GB	75-120W	入门桌面
+Cen 5	40	12GB	120-180W	主流桌面
+Cen 7	60	16GB	180-250W	高端桌面
+Cen 7 Pro	80	24GB	250-350W	专业工作站
+Cen 7 Max	96	24GB	300-450W	旗舰桌面
+Cen 5 Server	80	32GB HBM3	200-300W	通用计算
+Cen 7 Server	128	64GB HBM3	300-450W	HPC
+Cen 7 AI	512AI	48GB HBM3	250-350W	AI推理
+Cen 7 AI Max	1024AI	128GB HBM3	450-700W	AI训练
+ 
+结语
+CoreGPU以开放的架构、强大的性能、统一的生态，为每一位创作者、玩家、研究者提供极致的图形与计算体验。从移动设备到超级计算机，CoreGPU与CoreCPU携手，构建Core生态的视觉与计算基石。
+More Core, More Possible.

@@ -1,0 +1,15 @@
+Core
+Brain（脑机）：Core n BRA n
+CPU（中央处理器）：Core n Gen n
+GPU（并行计算处理器）：Core n Cen n
+MOBO（主板）：Core n Ben n
+UPS（电源）：Core n Den n
+RAM（随机存取存储器）：Core n Wen n
+Nand Flash（大容量串行闪存）：Core n Sen n
+I/O（输入/输出）：Core n WRen n
+IC（网络链接）：Core n Len n
+Display（显示）：Core n SHen n
+LoudSpeaker（音箱）：Core n LSen n
+CoolingModule（制冷模块）：Core n Ken n
+CameraModule（摄影模块）：Core n Men n
+SecurityModule（安全模块）：Core n Aen n

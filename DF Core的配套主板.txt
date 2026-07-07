@@ -1,0 +1,14 @@
+CPU槽:2
+协CPU槽:1
+GPU槽:4
+电源接口:2
+功率:220w*2/440w*1
+散热:全板型液金式+水冷式
+PCIe槽:16
+RAM槽:16
+单PCIe槽最大支持:16TB
+单RAM槽最大支持:128GB
+TPM支持:TPM3.2
+USB支持:USB3Gen3*8
+无线支持:NFC+WiFi8+Bluetooth+LAN
+启动模式:UEFI

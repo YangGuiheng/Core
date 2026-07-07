@@ -1,0 +1,10 @@
+CoreNoteBookPro
+CPU：Core Server Unit 9-128550TD1（适用于服务器的Core CPU 第一代九系（ARM架构），128物理核心（PE混动），最高频率5.5GHz）
+GPU：Core Graphic Pro1 10240-3-128HY（Core 专业图像卡，10240流处理器，最高频率3GHz，显存128GB，HBM，可以直接调用ECCHBM8000-512）
+NPU：Core AI Unit Pro1 10240TOPS（INT8）
+RAM：ECCHBM8000-512（Core 搭载ECC功能的8000速率的HBM）
+NAND Flash：20480GB ECCHSSD（Core 拥有ECC功能的高速SSD）
+Battry：100Wh（50Wh*2，允许热更换，允许直连双座200W充电器，最大支持4*200W同时接入CNBP并有效工作）
+Screen：3840*2160 2000尼特 100%P3
+散热：导热凝胶+CNC Al外壳，WorkStation状态需使用Core Ice Cold（CIC）散热座
+声音：12杜比环绕音响（6高音+6低音，双侧分布）
